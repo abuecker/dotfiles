@@ -1,0 +1,300 @@
+snippet rc "React Comment"
+{ /* $0 */ }
+endsnippet
+
+snippet a "Arrow functon" i
+($1) => {
+	$0
+}
+endsnippet
+
+snippet use "use"
+'use strict';
+endsnippet
+
+snippet esl "eslint override"
+/* eslint ${1}: ${2:0} */
+endsnippet
+
+snippet jshint "jshint"
+/* jshint ${1}: ${2:false} */
+endsnippet
+
+snippet is "jshint ignore start"
+/* jshint ignore: start */
+endsnippet
+
+snippet ie "jshint ignore end"
+/* jshint ignore: end */
+endsnippet
+
+snippet ignore "jshint ignore end"
+/* jshint ignore: start */
+${1}
+/* jshint ignore: end */
+endsnippet
+
+snippet vim "vim"
+// vim: ts=2 sw=2 expandtab:
+endsnippet
+
+snippet log "console.log"
+console.log(${1:'${2:--->}${3}'}${4});
+endsnippet
+
+snippet debug "debug"
+console.debug(${1:'${2:--->}${3}'}${4});
+endsnippet
+
+snippet dir "dir"
+console.dir(${1:'${2:===>}'}${3});
+endsnippet
+
+snippet r "require"
+var ${2:${1/(?:_|-)([A-Za-z0-9]+)(?:\.js)?/(?2::\u$1)/g}} = require('${1:sys}')$0;
+endsnippet
+
+snippet t "todo"
+// TODO: ${1} (`!p import time; snip.rv=time.asctime()`);
+endsnippet
+
+snippet de "describe"
+describe('$1', function () {
+    $2
+});
+endsnippet
+
+snippet it "it"
+it('$1', function () {
+    $2
+});
+endsnippet
+
+snippet f "function"
+function $1($2) {
+    $3
+});
+endsnippet
+
+snippet fe "function_err"
+function ${1:name} (err, ${2:arg}) {
+    $0;
+}
+endsnippet
+
+snippet fr "function_req"
+function ${1:name} (err, req, res) {
+    $0;
+}
+endsnippet
+
+snippet fn "function_needle"
+function ${1:name} (err, response, body) {
+    $0;
+}
+endsnippet
+
+
+snippet vf "var_function"
+var ${1:name} = function (${2:args1}) {
+    $0;
+};
+endsnippet
+
+
+snippet x "export"
+exports.${1:name} = $1;
+endsnippet
+
+snippet xr "export_require"
+exports.${1:name} = require('${2:./}${3:$1}');
+endsnippet
+
+snippet xf "export_function"
+exports.${1:name} = function (${2:req}, ${3:res}, ${4:next}) {
+    $0
+};
+endsnippet
+
+snippet doc "doc_comment"
+/**
+ * ${1:Docs for....}
+ */
+endsnippet
+
+
+snippet aw "async_waterfall"
+async.waterfall([
+    function (callback) {
+    },
+    function (arg1, arg2, callback) {
+    },
+], function (err, result) {
+    if (err) throw err;
+});
+endsnippet
+
+snippet as "async_series"
+async.waterfall([
+    function (callback) {
+    },
+    function (callback) {
+    },
+], function (err, results) {
+    if (err) throw err;
+});
+endsnippet
+
+snippet ap "async_parallel"
+async.parallel([
+    function (callback) {
+    },
+    function (callback) {
+    },
+], function (err, results) {
+    if (err) throw err;
+});
+endsnippet
+
+#snippet f "function"
+#/**
+# * Docs for $1
+# */
+#function ${1:function} (`!p
+#if snip.indent:
+#   snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+#snip.rv = ""
+#snip >> 1
+#
+#args = get_args(t[2])
+#if args:
+#   write_docstring_args(args, snip)
+#
+#style = get_style(snip)
+#snip += format_return(style)
+#snip.rv += '\n' + snip.mkline('', indent='')
+#snip += tripple_quotes(snip) `
+#    ${0:pass}
+#endsnippet
+
+
+
+
+
+
+#snippet .cb "_addCallback"
+#.addCallback(function(${1:e}) {
+#  $0
+#});
+#endsnippet
+#
+#snippet .canb "_addCancelback"
+#.addCancelback(function(${1:e}) {
+#  $0
+#});
+#endsnippet
+#
+#snippet .errb "_addErrback"
+#.addErrback(function(${1:e}) {
+#  $0
+#});
+#endsnippet
+#
+#snippet .lis "_addListener"
+#.addListener("${1:event}", function(${1:data}) {
+#  $0
+#});
+#
+#endsnippet
+#
+#snippet app "app"
+#if (module.id == require.main.id) {
+#    $0
+#}
+#
+#endsnippet
+#
+#snippet cat "cat"
+#posix.cat(${1:'${2:path}'}${3:, '${4:utf8}'})${5:.addCallback(function(content) {
+#    ${10:sys.puts(content);}$0
+#\})};
+#
+#endsnippet
+#
+#snippet deb "debug"
+#sys.debug(${1:'${2:hello world}'});
+#endsnippet
+#
+#snippet err "error"
+#sys.error(${1:'${2:ALERT}'});
+#endsnippet
+#
+#snippet exec "exec"
+#sys.exec(${1:'${2:ls -al}'})${5:.addCallback(function (stdout, stderr) {
+#  $0
+#\})};
+#endsnippet
+#
+#snippet exp "exports"
+#`#!/usr/bin/env ruby
+#  if File.read(ENV['TM_FILEPATH']) =~ /^var ([\w_]*?) = exports;/m
+#    print $1
+#  else
+#    print "exports"
+#  end
+#`.${2:name} = function(${3:arguments}) {
+#    $0
+#};
+#endsnippet
+#
+#snippet mixin "mixin"
+#process.mixin(${1:exports}, {
+#    $0
+#});
+#endsnippet
+#
+#snippet rmdir "mkdir"
+#posix.mkdir(${1:'${2:path}'}, ${3:'${4:mode}'})${5:.addCallback(function() {
+#    $0
+#\})};
+#
+#endsnippet
+#
+#snippet p "p"
+#sys.${1:p}(${2:'${3:hello world}'});
+#endsnippet
+#
+#snippet puts "puts"
+#sys.puts(${1:'${2:hello world}'});
+#endsnippet
+#
+#snippet readdir "readdir"
+#posix.readdir(${1:'${2:path}'})${5:.addCallback(function(files) {
+#    ${10:sys.p(files);}$0
+#\})};
+#
+#endsnippet
+#
+#snippet ren "rename"
+#posix.rename(${1:'${2:from}'}, ${3:'${4:to}'})${5:.addCallback(function() {
+#    $0
+#\})};
+#
+#endsnippet
+#
+#snippet rmdir "rmdir"
+#posix.rmdir(${1:'${2:path}'})${5:.addCallback(function() {
+#    $0
+#\})};
+#
+#endsnippet
+#
+#snippet stat "stat"
+#posix.stat(${1:'${2:path}'}).addCallback(function(stats) {
+#    ${10:sys.puts("stats: " + JSON.stringify(stats));}$0
+#});
+#
+#endsnippet
+#
+# Custom node snippets
+

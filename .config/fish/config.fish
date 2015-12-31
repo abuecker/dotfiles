@@ -1,5 +1,5 @@
 # update the path
-set -x PATH $HOME/local/bin /usr/local/bin ./node_modules/.bin $PATH
+set -x PATH $HOME/local/bin /usr/local/bin ./node_modules/.bin ~/Library/Python/2.7/bin $PATH
 
 set -x DEVELOPMENT true
 
@@ -21,15 +21,15 @@ end
 source $HOME/.config/fish/aliases.fish
 
 # setup powerline
-source ~/.config/fish/powerline-setup.fish
-powerline-setup
+# set fish_function_path $fish_function_path ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/fish
+# powerline-setup
 
 #
 # Node Version Manager
 #
 # test -s /Users/andybuecker/.nvm-fish/nvm.fish; and source /Users/andybuecker/.nvm-fish/nvm.fish
 test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapper/nvm.fish
-# nvm use v0.10.35
+nvm use 4.2.1
 
 #
 # Docker
@@ -48,7 +48,7 @@ test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapp
 #
 # Setup RVM
 #
-rvm current
+# rvm current
 
 #
 # Setup direnv
@@ -63,16 +63,17 @@ set -x JAVA_HOME /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Ho
 #
 # virtualenv support
 #
-# set -g VIRTUALFISH_COMPAT_ALIASES # uncomment for virtualenvwrapper-style commands
-set -x VFPATH ~/.config/fish/vf
-source $VFPATH/virtual.fish
-# optional plugins
-source $VFPATH/auto_activation.fish
-# source $VFPATH/global_requirements.fish
-# source $VFPATH/projects.fish
+eval (python -m virtualfish)
+# # set -g VIRTUALFISH_COMPAT_ALIASES # uncomment for virtualenvwrapper-style commands
+# set -x VFPATH ~/.config/fish/vf
+# source $VFPATH/virtual.fish
+# # optional plugins
+# source $VFPATH/auto_activation.fish
+# # source $VFPATH/global_requirements.fish
+# # source $VFPATH/projects.fish
 
 # suace labs keys
-source ~/.keys/chef/saucelabs.fish
+# source ~/.keys/chef/saucelabs.fish
 
 # increase the open file limit
 ulimit -n 10240
@@ -85,3 +86,16 @@ set -x PATH  ~/google-cloud-sdk/bin $PATH
 
 # The next line enables bash completion for gcloud.
 # source '/Users/andybuecker/google-cloud-sdk/completion.bash.inc'
+
+# Add firefox to the path for Selenium
+set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH
+
+set -x EDITOR /usr/local/bin/vim
+
+# The next line updates PATH for the Google Cloud SDK.
+set -x GCLOUD_SDK_PATH /Users/abuecker/local/opt/google-cloud-sdk
+set -x PATH $GCLOUD_SDK_PATH/bin $PATH
+
+# The next line enables shell command completion for gcloud.
+# source /Users/abuecker/local/opt/google-cloud-sdk/completion.bash.inc
+rvm default

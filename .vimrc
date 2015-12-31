@@ -26,7 +26,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mitechie/pyflakes-pathogen'
 Plugin 'fs111/pydoc.vim'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'rstacruz/sparkup'
 Plugin 'corntrace/bufexplorer'
 
@@ -55,6 +55,7 @@ Plugin 'pep8'
 Plugin 'EasyGrep'
 Plugin 'matchit.zip'
 Plugin 'mru.vim'
+Plugin 'loremipsum'
 
 " Use forked version of solarized colors with fixes for git gutters
 Plugin 'abuecker/vim-colors-solarized'
@@ -68,7 +69,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
 Plugin 'rizzatti/dash.vim'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " Toggle split fullscreen
 Plugin 'vim-scripts/ZoomWin'
@@ -103,6 +104,7 @@ set hidden            " hide buffers when not displayed
 syntax enable         " switch on syntax highlighting
 set background=dark   " use dark soloarized theme
 colorscheme solarized " set the color scheme
+highlight Comment cterm=italic
 set cursorline        " highlight the current line
 set number            " show line numbers
 set showmatch         " jump to the matching brace when you insert one
@@ -242,7 +244,7 @@ endif
 "------------------------
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode=0
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '_\.+$', '^dist$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 map <F3> :NERDTreeToggle<CR>
@@ -342,14 +344,13 @@ let g:used_javascript_libs = 'angularjs'
 "----------------------------------------
 " Ultisnip
 "----------------------------------------
-let g:UltiSnipsSnippetDirectories=['UltiSnips']
+let g:iSnipsSnippetDirectories=['UltiSnips', 'ab_snips']
 let g:UltiSnipsExpandTrigger='<tab>'
 " let g:UltiSnipsJumpForwardTrigger='<C-tab>'
 " let g:UltiSnipsJumpBackwardTrigger='<C-S-tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 let g:UltiSnipsEditSplit="horizontal"
-au FileType javascript execute 'UltiSnipsAddFiletypes node'
 
 "----------------------------------------
 " Syntastic
