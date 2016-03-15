@@ -29,7 +29,7 @@ source $HOME/.config/fish/aliases.fish
 #
 # test -s /Users/andybuecker/.nvm-fish/nvm.fish; and source /Users/andybuecker/.nvm-fish/nvm.fish
 test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapper/nvm.fish
-nvm use 4.2.1
+nvm use 4.2.4
 
 #
 # Docker

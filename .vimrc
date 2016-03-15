@@ -37,8 +37,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'Townk/vim-autoclose'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'https://github.com/wannesm/wmgraphviz.vim'
-Plugin 'Lokaltog/vim-easymotion'
-" Plugin 'kien/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Track ultisnips engine
 Plugin 'SirVer/ultisnips'
@@ -51,7 +51,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'L9'
 Plugin 'closetag.vim'
 Plugin 'tComment'
-Plugin 'pep8'
+" Plugin 'pep8'
 Plugin 'EasyGrep'
 Plugin 'matchit.zip'
 Plugin 'mru.vim'
@@ -72,13 +72,14 @@ Plugin 'rizzatti/dash.vim'
 " Plugin 'Valloric/YouCompleteMe'
 
 " Toggle split fullscreen
-Plugin 'vim-scripts/ZoomWin'
-Plugin 'Hydrotoast/vim-gss'
+" Plugin 'vim-scripts/ZoomWin'
+" Plugin 'Hydrotoast/vim-gss'
 
 Plugin 'terryma/vim-expand-region'
 
 Plugin 'bling/vim-airline'
 Plugin 'jmcantrell/vim-virtualenv'
+" Plugin 'wincent/command-t'
 
 " let mapleader='\<Space>'
 
@@ -194,8 +195,8 @@ au FileType js,jsx set ts=2 st=2
 "---------
 " node.js
 "---------
-map <leader>j :!node %<cr>
-map <leader>t :!mocha -R spec --no-colors %<cr>
+" map <leader>j :!node %<cr>
+" map <leader>t :!mocha -R spec --no-colors %<cr>
 
 " -----------
 " Git Gutter
@@ -244,7 +245,7 @@ endif
 "------------------------
 let NERDTreeHighlightCursorline=1
 let NERDTreeChDirMode=0
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '_\.+$', '^dist$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '^_.+[[dir]]', '^dist$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 map <F3> :NERDTreeToggle<CR>
@@ -647,3 +648,12 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" Remap arrow keys
+imap <ESC>oA <ESC>ki
+imap <ESC>oB <ESC>ji
+imap <ESC>oC <ESC>li
+imap <ESC>oD <ESC>hi
+
+" command-t
+let g:CommandTWildIgnore=&wildignore . ",_*/*,dist/*,node_modules/*""
