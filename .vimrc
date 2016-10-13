@@ -64,11 +64,11 @@ Plugin 't9md/vim-chef'
 Plugin 'dag/vim-fish'
 
 "tern for intelligent js completion
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
-Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim'
 " Plugin 'Valloric/YouCompleteMe'
 
 " Toggle split fullscreen
@@ -78,9 +78,12 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'terryma/vim-expand-region'
 
 Plugin 'bling/vim-airline'
-Plugin 'jmcantrell/vim-virtualenv'
-" Plugin 'wincent/command-t'
+Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'b4b4r07/vim-hcl'
+Plugin 'fatih/vim-go'
+" Plugin 'Yggdroot/indentLine'
 " let mapleader='\<Space>'
 
 " All of your Plugins must be added before the following line
@@ -126,7 +129,7 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
 \ [%l/%L\ (%p%%)
 
 " clear search
-map <leader>\ :noh<return><esc>
+nmap <leader>\ :noh<return><esc>
 
 " column select alt mouse
 noremap <M-LeftMouse> <LeftMouse><Esc><C-V>
@@ -155,8 +158,8 @@ autocmd! BufNewFile,BufRead *.raml set filetype=yaml foldmethod=indent
 "----------------------------------------
 " highlight content over 80 columns
 "----------------------------------------
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 "----------------------------------------
 " set the cursor shape for terminal editing
@@ -403,8 +406,9 @@ let g:javascript_conceal_prototype  = "¶"
 "----------------------------------------
 " YouCompleteMe
 "----------------------------------------
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 "----------------------------------------
 " Hexmode
@@ -632,6 +636,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " airline configuration
 set laststatus=2
 let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " Automatically jump to end of pasted text
 vnoremap <silent> y y`]
@@ -655,5 +660,14 @@ imap <ESC>oB <ESC>ji
 imap <ESC>oC <ESC>li
 imap <ESC>oD <ESC>hi
 
-" command-t
-let g:CommandTWildIgnore=&wildignore . ",_*/*,dist/*,node_modules/*""
+" Omni Complete
+set omnifunc=syntaxcomplete#Complete
+
+" ctrl p
+let g:ctrlp_map = '<c-P>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+set wildignore+=*/.git/*,*/node_modules/*
+" let g:ctrlp_custom_ignore = '(\.git|node_modules)$'
+let g:ctrlp_working_path_mode = 'rwa'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
+

@@ -1,3 +1,6 @@
+# Enable vi movement
+fish_vi_mode
+
 # update the path
 set -x PATH $HOME/local/bin /usr/local/bin ./node_modules/.bin ~/Library/Python/2.7/bin $PATH
 
@@ -29,12 +32,13 @@ source $HOME/.config/fish/aliases.fish
 #
 # test -s /Users/andybuecker/.nvm-fish/nvm.fish; and source /Users/andybuecker/.nvm-fish/nvm.fish
 test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapper/nvm.fish
-nvm use 4.2.4
+nvm use 5.10.1
 
 #
 # Docker
 #
-# set -x DOCKER_HOST tcp://127.0.0.1:4243
+# set -gx DOCKER_HOST tcp://192.168.100.100:2376
+set -xg DOCKER_HOST "unix:////var/run/docker.sock"
 
 #
 # Ansible
@@ -58,7 +62,8 @@ eval (direnv hook fish)
 #
 # Setup Java Runtime
 #
-set -x JAVA_HOME /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+# set -x JAVA_HOME /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+# set -x JAVA_HOME /usr/local/Caskroom/java/1.8.0_102-b14
 
 #
 # virtualenv support
@@ -99,3 +104,6 @@ set -x PATH $GCLOUD_SDK_PATH/bin $PATH
 # The next line enables shell command completion for gcloud.
 # source /Users/abuecker/local/opt/google-cloud-sdk/completion.bash.inc
 rvm default
+
+# Colorized manpages
+set -gx  MANPAGER "/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
