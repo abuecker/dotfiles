@@ -20,9 +20,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 " Plugin 'skammer/vim-css-color'  " too slow in tmux
 Plugin 'tpope/vim-markdown'
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
-Plugin 'groenewege/vim-less'
+" Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mitechie/pyflakes-pathogen'
 Plugin 'fs111/pydoc.vim'
@@ -47,7 +47,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " vim-scripts repos
-"
 Plugin 'L9'
 Plugin 'closetag.vim'
 Plugin 'tComment'
@@ -86,6 +85,8 @@ Plugin 'fatih/vim-go'
 " Plugin 'Yggdroot/indentLine'
 " let mapleader='\<Space>'
 
+Plugin 'vimwiki/vimwiki'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -122,7 +123,7 @@ set noerrorbells visualbell " disable the bell
 set clipboard+=unnamed      " share clipboard with windows clipboard
 
 "display tabs and trailing spaces
-set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
+set list listchars=tab:░░,trail:⋅,nbsp:⋅
 
 " status line not in use with Powerline
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
@@ -130,10 +131,6 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
 
 " clear search
 nmap <leader>\ :noh<return><esc>
-
-" column select alt mouse
-noremap <M-LeftMouse> <LeftMouse><Esc><C-V>
-noremap <M-LeftDrag> <LeftDrag>
 
 " folding
 nnoremap <space> za
@@ -253,6 +250,8 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 map <F3> :NERDTreeToggle<CR>
 map <leader>e   :NERDTreeToggle<CR>
+let NERDTreeMapOpenVSplit='<leader>v'
+let NERDTreeMapOpenSplit='s'
 
 "----------
 " Tagbar
@@ -343,7 +342,7 @@ noremap  <leader>se "hy:%s/\s\+$//g
 "------------------------------
 " javascript libs
 "------------------------------
-let g:used_javascript_libs = 'angularjs'
+let g:used_javascript_libs = 'react'
 
 "----------------------------------------
 " Ultisnip
@@ -401,6 +400,8 @@ let g:javascript_conceal_return     = "⇚"
 let g:javascript_conceal_undefined  = "¿"
 let g:javascript_conceal_NaN        = "ℕ"
 let g:javascript_conceal_prototype  = "¶"
+let g:javascript_plugin_jsdoc = 1
+set foldmethod=syntax " Please note this can have a dramatic effect on performance
 
 
 "----------------------------------------
@@ -408,7 +409,7 @@ let g:javascript_conceal_prototype  = "¶"
 "----------------------------------------
 " let g:ycm_collect_identifiers_from_tags_files = 1
 " let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 "----------------------------------------
 " Hexmode
@@ -643,17 +644,6 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
-" vp doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
-
 " Remap arrow keys
 imap <ESC>oA <ESC>ki
 imap <ESC>oB <ESC>ji
@@ -665,9 +655,16 @@ set omnifunc=syntaxcomplete#Complete
 
 " ctrl p
 let g:ctrlp_map = '<c-P>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-set wildignore+=*/.git/*,*/node_modules/*
+let g:ctrlp_cmd = 'CtrlP'
+" set wildignore+=*/node_modules/*
 " let g:ctrlp_custom_ignore = '(\.git|node_modules)$'
-let g:ctrlp_working_path_mode = 'rwa'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules)$'
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
+let g:ctrlp_show_hidden = 1
 
+" TODO list
+command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+
+" Wiki
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/wiki', 'path_html': '~/Dropbox/vimwiki/html'}]
