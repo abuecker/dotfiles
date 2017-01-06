@@ -658,13 +658,13 @@ let g:ctrlp_map = '<c-P>'
 let g:ctrlp_cmd = 'CtrlP'
 " set wildignore+=*/node_modules/*
 " let g:ctrlp_custom_ignore = '(\.git|node_modules)$'
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules|\..+)$'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_show_hidden = 1
 
 " TODO list
-command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+command! Todo noautocmd vimgrep /TODO\|FIXME/j src/** | cw
 
 " Wiki
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/wiki', 'path_html': '~/Dropbox/vimwiki/html'}]
