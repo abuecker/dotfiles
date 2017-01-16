@@ -1,5 +1,5 @@
 # Enable vi movement
-fish_vi_mode
+fish_vi_key_bindings
 
 # update the path
 set -x PATH $HOME/local/bin /usr/local/bin ./node_modules/.bin ~/Library/Python/2.7/bin $PATH
@@ -31,8 +31,10 @@ source $HOME/.config/fish/aliases.fish
 # Node Version Manager
 #
 # test -s /Users/andybuecker/.nvm-fish/nvm.fish; and source /Users/andybuecker/.nvm-fish/nvm.fish
-test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapper/nvm.fish
-nvm use 5.10.1
+
+#bass source ~/.nvm/nvm.sh --no-use
+#test -s ~/.config/fish/nvm-wrapper/nvm.fish; and source ~/.config/fish/nvm-wrapper/nvm.fish
+#nvm use 5.10.1
 
 #
 # Docker
@@ -60,15 +62,9 @@ set -xg DOCKER_HOST "unix:////var/run/docker.sock"
 eval (direnv hook fish)
 
 #
-# Setup Java Runtime
-#
-# set -x JAVA_HOME /Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
-# set -x JAVA_HOME /usr/local/Caskroom/java/1.8.0_102-b14
-
-#
 # virtualenv support
 #
-eval (python -m virtualfish)
+#eval (python -m virtualfish)
 # # set -g VIRTUALFISH_COMPAT_ALIASES # uncomment for virtualenvwrapper-style commands
 # set -x VFPATH ~/.config/fish/vf
 # source $VFPATH/virtual.fish
@@ -85,9 +81,6 @@ ulimit -n 10240
 
 set -x BS_USERNAME andybuecker1
 set -x BS_AUTHKEY rszpm3t6trZP1sCdqwUM
-
-# The next line updates PATH for the Google Cloud SDK.
-set -x PATH  ~/google-cloud-sdk/bin $PATH
 
 # The next line enables bash completion for gcloud.
 # source '/Users/andybuecker/google-cloud-sdk/completion.bash.inc'
@@ -107,3 +100,5 @@ rvm default
 
 # Colorized manpages
 set -gx  MANPAGER "/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
+set -xg TERM tmux-256color

@@ -86,6 +86,7 @@ Plugin 'fatih/vim-go'
 " let mapleader='\<Space>'
 
 Plugin 'vimwiki/vimwiki'
+Plugin 'direnv/direnv.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
