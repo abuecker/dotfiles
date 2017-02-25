@@ -86,7 +86,14 @@ Plugin 'fatih/vim-go'
 " let mapleader='\<Space>'
 
 Plugin 'vimwiki/vimwiki'
+Plugin 'tbabej/taskwiki'
+Plugin 'powerman/vim-plugin-AnsiEsc'
+Plugin 'blindFS/vim-taskwarrior'
+
 Plugin 'direnv/direnv.vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'Quramy/vim-js-pretty-template'
+Plugin 'rdolgushin/groovy.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -257,7 +264,7 @@ let NERDTreeMapOpenSplit='s'
 "----------
 " Tagbar
 "----------
-let g:tagbar_ctags_bin='~/local/bin/ctags'
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:tagbar_sort = 0
 let g:tagbar_foldlevel = 0
 let g:tagbar_iconchars = ['▸', '▾']
@@ -668,4 +675,27 @@ let g:ctrlp_show_hidden = 1
 command! Todo noautocmd vimgrep /TODO\|FIXME/j src/** | cw
 
 " Wiki
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/wiki', 'path_html': '~/Dropbox/vimwiki/html'}]
+let g:vimwiki_list = [{'path': '~/Dropbox\ \(Personal\)/vimwiki/wiki', 'path_html': '~/Dropbox\ \(Personal\)/vimwiki/html'}]
+
+"Go
+"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:go_fmt_command = "goimports"
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)

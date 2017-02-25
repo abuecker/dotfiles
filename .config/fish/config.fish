@@ -96,7 +96,7 @@ set -x PATH $GCLOUD_SDK_PATH/bin $PATH
 
 # The next line enables shell command completion for gcloud.
 # source /Users/abuecker/local/opt/google-cloud-sdk/completion.bash.inc
-rvm default
+# rvm default
 
 # Colorized manpages
 set -gx  MANPAGER "/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""

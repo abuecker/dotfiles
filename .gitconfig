@@ -1,6 +1,6 @@
 [user]
-	name = Andy Buecker
-	email = abuecker@gmail.com
+	name = 
+	email = 
 [core]
 	excludesfile = /Users/abuecker/.gitignore_global
 	editor = /usr/local/bin/vim
@@ -50,3 +50,5 @@
 
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
+[commit]
+	template = /Users/abuecker/.stCommitMsg
