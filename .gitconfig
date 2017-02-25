@@ -1,6 +1,6 @@
 [user]
-	name = 
-	email = 
+	name = Andy Buecker
+	email = andy@48s.io
 [core]
 	excludesfile = /Users/abuecker/.gitignore_global
 	editor = /usr/local/bin/vim
