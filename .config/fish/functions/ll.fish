@@ -1,3 +1,3 @@
 function ll
-	ls -al $argv
+	ls -alh $argv
 end

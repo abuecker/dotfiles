@@ -93,7 +93,11 @@ Plugin 'blindFS/vim-taskwarrior'
 Plugin 'direnv/direnv.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
-Plugin 'rdolgushin/groovy.vim'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-packer'
+Plugin 'hashivim/vim-vagrant'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -242,7 +246,9 @@ if has('gui_running')
 else
     "some stuff to get the mouse going in term
     set mouse=a
-    set ttymouse=xterm2
+    if !has('nvim')
+      set ttymouse=xterm2
+    endif
     "tell the term has 256 colors
     set t_Co=256
 endif
