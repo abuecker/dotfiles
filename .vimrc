@@ -56,8 +56,9 @@ Plugin 'matchit.zip'
 Plugin 'mru.vim'
 Plugin 'loremipsum'
 
+Plugin 'altercation/vim-colors-solarized'
 " Use forked version of solarized colors with fixes for git gutters
-Plugin 'abuecker/vim-colors-solarized'
+" Plugin 'abuecker/vim-colors-solarized'
 
 Plugin 't9md/vim-chef'
 Plugin 'dag/vim-fish'
@@ -85,19 +86,23 @@ Plugin 'fatih/vim-go'
 " Plugin 'Yggdroot/indentLine'
 " let mapleader='\<Space>'
 
-Plugin 'vimwiki/vimwiki'
-Plugin 'tbabej/taskwiki'
+" Plugin 'vimwiki/vimwiki'
+" Plugin 'tbabej/taskwiki'
 Plugin 'powerman/vim-plugin-AnsiEsc'
-Plugin 'blindFS/vim-taskwarrior'
+" Plugin 'blindFS/vim-taskwarrior'
 
 Plugin 'direnv/direnv.vim'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
 Plugin 'hashivim/vim-terraform'
 Plugin 'hashivim/vim-packer'
 Plugin 'hashivim/vim-vagrant'
+
+Plugin 'digitaltoad/vim-pug'
+
+Plugin 'ruanyl/vim-fixmyjs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -135,7 +140,7 @@ set noerrorbells visualbell " disable the bell
 set clipboard+=unnamed      " share clipboard with windows clipboard
 
 "display tabs and trailing spaces
-set list listchars=tab:░░,trail:⋅,nbsp:⋅
+set list listchars=tab:⎸\ ,trail:⋅,nbsp:⋅
 
 " status line not in use with Powerline
 set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
@@ -270,22 +275,22 @@ let NERDTreeMapOpenSplit='s'
 "----------
 " Tagbar
 "----------
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:tagbar_sort = 0
-let g:tagbar_foldlevel = 0
-let g:tagbar_iconchars = ['▸', '▾']
-let g:tagbar_compact = 1
-map <F7> :TagbarToggle<CR>
-
-" markdown
-let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Heading_L1',
-        \ 'i:Heading_L2',
-        \ 'k:Heading_L3'
-    \ ]
-\ }
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" let g:tagbar_sort = 0
+" let g:tagbar_foldlevel = 0
+" let g:tagbar_iconchars = ['▸', '▾']
+" let g:tagbar_compact = 1
+" map <F7> :TagbarToggle<CR>
+"
+" " markdown
+" let g:tagbar_type_markdown = {
+"     \ 'ctagstype' : 'markdown',
+"     \ 'kinds' : [
+"         \ 'h:Heading_L1',
+"         \ 'i:Heading_L2',
+"         \ 'k:Heading_L3'
+"     \ ]
+" \ }
 
 "-----------------------------
 " Diff the current buffer with saved on disc
@@ -361,7 +366,7 @@ let g:used_javascript_libs = 'react'
 "----------------------------------------
 " Ultisnip
 "----------------------------------------
-let g:iSnipsSnippetDirectories=['UltiSnips', 'ab_snips']
+let g:UltiSnipsSnippetDirectories=["~/.vim/ab_snips"]
 let g:UltiSnipsExpandTrigger='<tab>'
 " let g:UltiSnipsJumpForwardTrigger='<C-tab>'
 " let g:UltiSnipsJumpBackwardTrigger='<C-S-tab>'
@@ -705,3 +710,8 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+" Fixmyjs
+let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
+let g:fixmyjs_rc_local = 1
+noremap <Leader><Leader>f :Fixmyjs<CR>

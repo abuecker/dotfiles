@@ -1,6 +1,8 @@
 # Enable vi movement
 fish_vi_key_bindings
 
+alias tmux "direnv exec / tmux"
+
 # update the path
 set -x PATH $HOME/local/bin /usr/local/bin ./node_modules/.bin ~/Library/Python/2.7/bin $PATH
 
@@ -79,9 +81,6 @@ eval (direnv hook fish)
 # increase the open file limit
 ulimit -n 10240
 
-set -x BS_USERNAME andybuecker1
-set -x BS_AUTHKEY rszpm3t6trZP1sCdqwUM
-
 # The next line enables bash completion for gcloud.
 # source '/Users/andybuecker/google-cloud-sdk/completion.bash.inc'
 
@@ -102,3 +101,5 @@ set -x PATH $GCLOUD_SDK_PATH/bin $PATH
 set -gx  MANPAGER "/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 set -xg TERM tmux-256color
+
+source ~/.config/fish/ssh_agent_start.fish
