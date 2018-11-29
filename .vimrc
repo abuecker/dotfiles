@@ -1,9 +1,17 @@
+" forces true colour on, since vim can’t detect it within tmux. 
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
 set shell=/bin/bash
+set encoding=UTF-8
 
 "-------------------------------
 "       Vundle
 "-------------------------------
 set nocompatible
+set ttyfast
+" set lazyredraw
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -15,6 +23,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
@@ -24,8 +33,8 @@ Plugin 'tpope/vim-markdown'
 Plugin 'tpope/vim-surround'
 " Plugin 'groenewege/vim-less'
 " Plugin 'kchmck/vim-coffee-script'
-Plugin 'mitechie/pyflakes-pathogen'
-Plugin 'fs111/pydoc.vim'
+" Plugin 'mitechie/pyflakes-pathogen'
+" Plugin 'fs111/pydoc.vim'
 " Plugin 'klen/python-mode'
 Plugin 'rstacruz/sparkup'
 Plugin 'corntrace/bufexplorer'
@@ -57,6 +66,13 @@ Plugin 'mru.vim'
 Plugin 'loremipsum'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'arcticicestudio/nord-vim'
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+let g:nord_comment_brightness = 12 "The comment brightness can be increased by 1 - 20
+let g:nord_cursor_line_number_background = 1
+
 " Use forked version of solarized colors with fixes for git gutters
 " Plugin 'abuecker/vim-colors-solarized'
 
@@ -68,7 +84,7 @@ Plugin 'dag/vim-fish'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mattn/emmet-vim'
-" Plugin 'rizzatti/dash.vim'
+" Plugin 'rizzatti/dash.vim' 
 " Plugin 'Valloric/YouCompleteMe'
 
 " Toggle split fullscreen
@@ -77,10 +93,8 @@ Plugin 'mattn/emmet-vim'
 
 Plugin 'terryma/vim-expand-region'
 
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'
 
-Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'b4b4r07/vim-hcl'
 Plugin 'fatih/vim-go'
 " Plugin 'Yggdroot/indentLine'
@@ -92,7 +106,7 @@ Plugin 'powerman/vim-plugin-AnsiEsc'
 " Plugin 'blindFS/vim-taskwarrior'
 
 Plugin 'direnv/direnv.vim'
-" Plugin 'leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
@@ -103,6 +117,39 @@ Plugin 'hashivim/vim-vagrant'
 Plugin 'digitaltoad/vim-pug'
 
 Plugin 'ruanyl/vim-fixmyjs'
+Plugin 'tpope/vim-obsession'
+Plugin 'styled-components/vim-styled-components'
+Plugin 'cespare/vim-toml'
+
+" Icons and colors
+Plugin 'ryanoasis/vim-devicons'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeGitStatusWithFlags = 1
+
+let g:NERDTreeColorMapCustom = {
+    \ "Modified"  : "#528AB3",  
+    \ "Staged"    : "#538B54",  
+    \ "Untracked" : "#BE5849",  
+    \ "Dirty"     : "#299999",  
+    \ "Clean"     : "#87939A"   
+    \ } 
+
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeHighlightCursorline = 0
+
+" Highlight full name (not only icons).
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+Plugin 'prettier/vim-prettier'
+Plugin 'flowtype/vim-flow'
+let g:flow#autoclose = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -125,7 +172,7 @@ set noswapfile        " no swap files
 set hidden            " hide buffers when not displayed
 syntax enable         " switch on syntax highlighting
 set background=dark   " use dark soloarized theme
-colorscheme solarized " set the color scheme
+colorscheme nord " set the color scheme
 highlight Comment cterm=italic
 set cursorline        " highlight the current line
 set number            " show line numbers
@@ -140,11 +187,11 @@ set noerrorbells visualbell " disable the bell
 set clipboard+=unnamed      " share clipboard with windows clipboard
 
 "display tabs and trailing spaces
-set list listchars=tab:⎸\ ,trail:⋅,nbsp:⋅
+set list listchars=tab:➠\ ,trail:⋅,nbsp:⋅
 
 " status line not in use with Powerline
-set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
-\ [%l/%L\ (%p%%)
+" set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
+" \ [%l/%L\ (%p%%)
 
 " clear search
 nmap <leader>\ :noh<return><esc>
@@ -262,8 +309,8 @@ endif
 "------------------------
 " NERD_tree config
 "------------------------
-let NERDTreeHighlightCursorline=1
-let NERDTreeChDirMode=0
+" let NERDTreeHighlightCursorline=1
+" let NERDTreeChDirMode=0
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '^_.+[[dir]]', '^dist$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
@@ -271,6 +318,7 @@ map <F3> :NERDTreeToggle<CR>
 map <leader>e   :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit='<leader>v'
 let NERDTreeMapOpenSplit='s'
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "----------
 " Tagbar
@@ -389,8 +437,12 @@ let g:syntastic_html_tidy_ignore_errors = [
     \ '<script> escaping malformed URI reference'
     \ ]
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers            = ['mri']
-let g:syntastic_python_checkers          = ['flake8']
+" let g:syntastic_python_checkers          = ['pylint']
 let g:syntastic_javascript_checkers      = ['eslint']
 " let g:syntastic_javascript_checkers      = ['jshint']
 " let g:syntastic_javascript_checkers      = ['eslint', 'jshint']
@@ -421,7 +473,7 @@ let g:javascript_conceal_NaN        = "ℕ"
 let g:javascript_conceal_prototype  = "¶"
 let g:javascript_plugin_jsdoc = 1
 set foldmethod=syntax " Please note this can have a dramatic effect on performance
-
+let g:javascript_plugin_flow = 1
 
 "----------------------------------------
 " YouCompleteMe
@@ -653,10 +705,28 @@ silent! execute WatchForChanges("*",autoreadargs)
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" airline configuration
+" Lightline config
 set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_theme='solarized'
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'LightLineFugitive',
+      \   'filename': 'LightLineFilename'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      \ }
+function! LightLineFilename()
+  return expand('%')
+endfunction
+function! LightLineFugitive()
+  return exists('*fugitive#head') ? printf("\ue0a0 %s", fugitive#head()) : ''
+endfunction
 
 " Automatically jump to end of pasted text
 vnoremap <silent> y y`]
@@ -677,7 +747,7 @@ let g:ctrlp_map = '<c-P>'
 let g:ctrlp_cmd = 'CtrlP'
 " set wildignore+=*/node_modules/*
 " let g:ctrlp_custom_ignore = '(\.git|node_modules)$'
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules|\..+)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules|stud_modules|dist|wercker|direnv\..+)$'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_show_hidden = 1
@@ -715,3 +785,14 @@ au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
 let g:fixmyjs_rc_local = 1
 noremap <Leader><Leader>f :Fixmyjs<CR>
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Yapf
+autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
+autocmd BufWritePre *.py 0,$!yapf
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif

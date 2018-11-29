@@ -29,7 +29,7 @@
     br = branch
     co = checkout
     ci = commit
-    l = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+    l = log --graph --all --oneline
     ll = log --stat --abbrev-commit'
     st = status -sb
     df = diff
@@ -43,13 +43,14 @@
     interactive = auto
     status = auto
 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
 [commit]
 	template = /Users/abuecker/.stCommitMsg
+[http]
+	cookiefile = /Users/abuecker/.gitcookies
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
