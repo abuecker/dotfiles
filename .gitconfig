@@ -49,8 +49,12 @@
 	template = /Users/abuecker/.stCommitMsg
 [http]
 	cookiefile = /Users/abuecker/.gitcookies
+[lfs]
+	activitytimeout = 0
+[lfs "transfer"]
+	maxretries = 2
 [filter "lfs"]
+	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f

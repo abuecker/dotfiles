@@ -147,9 +147,18 @@ let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
-Plugin 'prettier/vim-prettier'
 Plugin 'flowtype/vim-flow'
 let g:flow#autoclose = 1
+
+Plugin 'prettier/vim-prettier'
+let g:prettier#quickfix_auto_focus = 0
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
+Plugin 'dart-lang/dart-vim-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -323,12 +332,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "----------
 " Tagbar
 "----------
-" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-" let g:tagbar_sort = 0
-" let g:tagbar_foldlevel = 0
-" let g:tagbar_iconchars = ['▸', '▾']
-" let g:tagbar_compact = 1
-" map <F7> :TagbarToggle<CR>
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_sort = 0
+let g:tagbar_foldlevel = 0
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_compact = 1
+map <F8> :TagbarToggle<CR>
 "
 " " markdown
 " let g:tagbar_type_markdown = {
@@ -442,7 +451,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers            = ['mri']
-" let g:syntastic_python_checkers          = ['pylint']
+let g:syntastic_python_checkers          = ['pylama']
 let g:syntastic_javascript_checkers      = ['eslint']
 " let g:syntastic_javascript_checkers      = ['jshint']
 " let g:syntastic_javascript_checkers      = ['eslint', 'jshint']
@@ -791,7 +800,7 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Yapf
 autocmd FileType python nnoremap <leader>y :0,$!yapf<Cr><C-o>
-autocmd BufWritePre *.py 0,$!yapf
+" autocmd BufWritePre *.py 0,$!yapf
 
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()

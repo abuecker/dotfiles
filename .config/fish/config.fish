@@ -1,7 +1,7 @@
 # Enable vi movement
 fish_vi_key_bindings
 
-alias tmux "direnv exec / tmux"
+# alias tmux "direnv exec / tmux"
 
 # update the path
 set -x PATH $HOME/local/bin \
@@ -10,6 +10,7 @@ set -x PATH $HOME/local/bin \
   ~/Library/Python/2.7/bin \
   ~/Library/Python/3.7/bin \
   /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
+  ~/.local/bin \
   $PATH
 
 set -x DEVELOPMENT true
