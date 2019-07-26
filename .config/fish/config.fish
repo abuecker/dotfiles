@@ -1,8 +1,6 @@
 # Enable vi movement
 fish_vi_key_bindings
 
-# alias tmux "direnv exec / tmux"
-
 # update the path
 set -x PATH $HOME/local/bin \
   /usr/local/bin \

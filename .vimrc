@@ -111,6 +111,10 @@ Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
 Plugin 'hashivim/vim-terraform'
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+let g:terraform_fold_sections=1
+
 Plugin 'hashivim/vim-packer'
 Plugin 'hashivim/vim-vagrant'
 
@@ -453,8 +457,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers            = ['mri']
 let g:syntastic_python_checkers          = ['pylama']
 let g:syntastic_javascript_checkers      = ['eslint']
-" let g:syntastic_javascript_checkers      = ['jshint']
-" let g:syntastic_javascript_checkers      = ['eslint', 'jshint']
+let g:syntastic_yaml_checkers      = ['yamllint']
 
 "----------------------------------------
 " Tabularize
