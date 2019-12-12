@@ -25,8 +25,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
-Plugin 'godlygeek/tabular'
-Plugin 'majutsushi/tagbar'
+" Plugin 'godlygeek/tabular'
+" Plugin 'majutsushi/tagbar'
 " Plugin 'skammer/vim-css-color'  " too slow in tmux
 Plugin 'tpope/vim-markdown'
 " Plugin 'tpope/vim-rails'
@@ -36,16 +36,16 @@ Plugin 'tpope/vim-surround'
 " Plugin 'mitechie/pyflakes-pathogen'
 " Plugin 'fs111/pydoc.vim'
 " Plugin 'klen/python-mode'
-Plugin 'rstacruz/sparkup'
-Plugin 'corntrace/bufexplorer'
+" Plugin 'rstacruz/sparkup'
+Plugin 'jlanzarotta/bufexplorer'
 
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
 Plugin 'Townk/vim-autoclose'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'https://github.com/wannesm/wmgraphviz.vim'
+" Plugin 'maksimr/vim-jsbeautify'
+" Plugin 'https://github.com/wannesm/wmgraphviz.vim'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -60,38 +60,41 @@ Plugin 'L9'
 Plugin 'closetag.vim'
 Plugin 'tComment'
 " Plugin 'pep8'
-Plugin 'EasyGrep'
+" Plugin 'EasyGrep'
 Plugin 'matchit.zip'
 Plugin 'mru.vim'
 Plugin 'loremipsum'
 
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'arcticicestudio/nord-vim'
 let g:nord_italic = 1
 let g:nord_underline = 1
 let g:nord_italic_comments = 1
-let g:nord_comment_brightness = 12 "The comment brightness can be increased by 1 - 20
 let g:nord_cursor_line_number_background = 1
 
 " Use forked version of solarized colors with fixes for git gutters
 " Plugin 'abuecker/vim-colors-solarized'
 
-Plugin 't9md/vim-chef'
+" Plugin 't9md/vim-chef'
 Plugin 'dag/vim-fish'
 
 "tern for intelligent js completion
 " Plugin 'marijnh/tern_for_vim'
 
 Plugin 'airblade/vim-gitgutter'
+highlight clear SignColumn
+
 Plugin 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<C-Z>'
 " Plugin 'rizzatti/dash.vim' 
-" Plugin 'Valloric/YouCompleteMe'
 
 " Toggle split fullscreen
 " Plugin 'vim-scripts/ZoomWin'
 " Plugin 'Hydrotoast/vim-gss'
 
 Plugin 'terryma/vim-expand-region'
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 Plugin 'itchyny/lightline.vim'
 
@@ -100,14 +103,11 @@ Plugin 'fatih/vim-go'
 " Plugin 'Yggdroot/indentLine'
 " let mapleader='\<Space>'
 
-" Plugin 'vimwiki/vimwiki'
-" Plugin 'tbabej/taskwiki'
 Plugin 'powerman/vim-plugin-AnsiEsc'
-" Plugin 'blindFS/vim-taskwarrior'
 
 Plugin 'direnv/direnv.vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'Quramy/vim-js-pretty-template'
+" Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 
 Plugin 'hashivim/vim-terraform'
@@ -120,8 +120,9 @@ Plugin 'hashivim/vim-vagrant'
 
 Plugin 'digitaltoad/vim-pug'
 
-Plugin 'ruanyl/vim-fixmyjs'
-Plugin 'tpope/vim-obsession'
+" fix linting error
+" Plugin 'ruanyl/vim-fixmyjs'
+" Plugin 'tpope/vim-obsession'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'cespare/vim-toml'
 
@@ -151,9 +152,6 @@ let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
 
-Plugin 'flowtype/vim-flow'
-let g:flow#autoclose = 1
-
 Plugin 'prettier/vim-prettier'
 let g:prettier#quickfix_auto_focus = 0
 " when running at every change you may want to disable quickfix
@@ -162,7 +160,22 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
-Plugin 'dart-lang/dart-vim-plugin'
+
+
+"----------------------------------------
+" YouCompleteMe
+"----------------------------------------
+" Plugin 'Valloric/YouCompleteMe'
+" " Start autocompletion after 4 chars
+" let g:ycm_min_num_of_chars_for_completion = 4
+" let g:ycm_min_num_identifier_candidate_chars = 4
+" let g:ycm_enable_diagnostic_highlighting = 0
+" " Don't show YCM's preview window [ I find it really annoying ]
+" set completeopt-=preview
+" let g:ycm_add_preview_to_completeopt = 0
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -202,10 +215,6 @@ set clipboard+=unnamed      " share clipboard with windows clipboard
 "display tabs and trailing spaces
 set list listchars=tab:➠\ ,trail:⋅,nbsp:⋅
 
-" status line not in use with Powerline
-" set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\
-" \ [%l/%L\ (%p%%)
-
 " clear search
 nmap <leader>\ :noh<return><esc>
 
@@ -213,18 +222,13 @@ nmap <leader>\ :noh<return><esc>
 nnoremap <space> za
 vnoremap <space> zf
 
-"jsbeautify
-map <c-f> :call JsBeautify()<cr>
-
-" Map .jake to javascript
-au BufNewFile,BufRead *.jake set filetype=javascript
+" Unfold all by default
+au BufRead * normal zR
 
 " copy/paste
 vmap <C-c> y:call system("pbcopy", getreg("\""))<CR>
 nmap <D-v> :call setreg("\"",system("pbpaste"))<CR>p
 
-" Unfold all by default
-au BufRead * normal zR
 
 " set the raml files to use yaml syntax highlighting
 autocmd! BufNewFile,BufRead *.raml set filetype=yaml foldmethod=indent
@@ -232,8 +236,8 @@ autocmd! BufNewFile,BufRead *.raml set filetype=yaml foldmethod=indent
 "----------------------------------------
 " highlight content over 80 columns
 "----------------------------------------
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
 
 "----------------------------------------
 " set the cursor shape for terminal editing
@@ -249,8 +253,8 @@ endif
 "------
 " Ruby
 "------
-au FileType ruby,eruby set ts=2 st=2
-map <leader>r :!ruby %<cr> " execute ruby
+" au FileType ruby,eruby set ts=2 st=2
+" map <leader>r :!ruby %<cr> " execute ruby
 
 " ---------
 " Python
@@ -269,45 +273,17 @@ map <leader>p :!python %<cr> " run python
 " ---------
 au FileType js,jsx set ts=2 st=2
 
-"---------
-" node.js
-"---------
-" map <leader>j :!node %<cr>
-" map <leader>t :!mocha -R spec --no-colors %<cr>
-
-" -----------
-" Git Gutter
-" -----------
-highlight clear SignColumn
-
-" -------------------------
-" html syntax completion
-" -------------------------
-let g:user_emmet_leader_key='<C-Z>'
-
-" ---------------------
-" Integrate with Dash
-" ---------------------
-:nmap <silent> <leader>d <Plug>DashSearch
-
 " -----------
 " React JSX
 " -----------
 let g:jsx_ext_required = 0  " JSX in .js files
 
-"-------------------------------
-"     Powerline
-"-------------------------------
-" set laststatus=2
-" set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
-" set encoding=utf-8
-" set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
 "----------------------------------
 " Font
 "----------------------------------
 if has('gui_running')
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
+    " set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
+    set guifont=FuraCode\ Nerd\ Font\ Mono:h14
 else
     "some stuff to get the mouse going in term
     set mouse=a
@@ -324,24 +300,25 @@ endif
 "------------------------
 " let NERDTreeHighlightCursorline=1
 " let NERDTreeChDirMode=0
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '^_.+[[dir]]', '^dist$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '^_.+[[dir]]', '^dist$', '^.wercker', '^pkg']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks=0
 map <F3> :NERDTreeToggle<CR>
 map <leader>e   :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit='<leader>v'
 let NERDTreeMapOpenSplit='s'
+" close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "----------
 " Tagbar
 "----------
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:tagbar_sort = 0
-let g:tagbar_foldlevel = 0
-let g:tagbar_iconchars = ['▸', '▾']
-let g:tagbar_compact = 1
-map <F8> :TagbarToggle<CR>
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" let g:tagbar_sort = 0
+" let g:tagbar_foldlevel = 0
+" let g:tagbar_iconchars = ['▸', '▾']
+" let g:tagbar_compact = 1
+" map <F8> :TagbarToggle<CR>
 "
 " " markdown
 " let g:tagbar_type_markdown = {
@@ -454,7 +431,7 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers            = ['mri']
+" let g:syntastic_ruby_checkers            = ['mri']
 let g:syntastic_python_checkers          = ['pylama']
 let g:syntastic_javascript_checkers      = ['eslint']
 let g:syntastic_yaml_checkers      = ['yamllint']
@@ -462,12 +439,12 @@ let g:syntastic_yaml_checkers      = ['yamllint']
 "----------------------------------------
 " Tabularize
 "----------------------------------------
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+" if exists(":Tabularize")
+"   nmap <Leader>a= :Tabularize /=<CR>
+"   vmap <Leader>a= :Tabularize /=<CR>
+"   nmap <Leader>a: :Tabularize /:\zs<CR>
+"   vmap <Leader>a: :Tabularize /:\zs<CR>
+" endif
 
 
 "----------------------------------------
@@ -487,12 +464,6 @@ let g:javascript_plugin_jsdoc = 1
 set foldmethod=syntax " Please note this can have a dramatic effect on performance
 let g:javascript_plugin_flow = 1
 
-"----------------------------------------
-" YouCompleteMe
-"----------------------------------------
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 
 "----------------------------------------
 " Hexmode
@@ -713,9 +684,6 @@ let autoreadargs={'autoread':1}
 " Startup autoread silently
 silent! execute WatchForChanges("*",autoreadargs)
 
-" expand region configuration
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 " Lightline config
 set laststatus=2
@@ -759,7 +727,8 @@ let g:ctrlp_map = '<c-P>'
 let g:ctrlp_cmd = 'CtrlP'
 " set wildignore+=*/node_modules/*
 " let g:ctrlp_custom_ignore = '(\.git|node_modules)$'
-let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules|stud_modules|dist|wercker|direnv\..+)$'
+
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|node_modules|stud_modules|dist|wercker|direnv|coverage\..+)$'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 let g:ctrlp_show_hidden = 1
@@ -772,31 +741,31 @@ let g:vimwiki_list = [{'path': '~/Dropbox\ \(Personal\)/vimwiki/wiki', 'path_htm
 
 "Go
 "
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
-let g:go_fmt_command = "goimports"
-
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_build_constraints = 1
+"
+" let g:go_fmt_command = "goimports"
+"
+" au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>b <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+"
+" au FileType go nmap <Leader>ds <Plug>(go-def-split)
+" au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+" au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+"
+" au FileType go nmap <Leader>gd <Plug>(go-doc)
+" au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 
 " Fixmyjs
-let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
-let g:fixmyjs_rc_local = 1
-noremap <Leader><Leader>f :Fixmyjs<CR>
+" let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
+" let g:fixmyjs_rc_local = 1
+" noremap <Leader><Leader>f :Fixmyjs<CR>
 
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
