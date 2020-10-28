@@ -1,144 +1,156 @@
 {
-    "telemetry.enableTelemetry": false,
-    "editor.minimap.enabled": false,
-    "editor.fontSize": 14,
-    "editor.tabSize": 2,
-    "editor.renderWhitespace": "none",
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "comment",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            }
-        ]
-    },
-    "breadcrumbs.enabled": true,
-    "workbench.colorTheme": "Nordico",
-    "eslint.packageManager": "yarn",
-    "npm.packageManager": "yarn",
-    "npm.enableScriptExplorer": true,
-    "npm.exclude": "**/.wercker/**",
-    "editor.fontLigatures": true,
-    "editor.fontFamily": "Fira Code",
-    "[javascript]": {
-        "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsx]": {
-        "editor.formatOnSave": true
-    },
-    "vim.easymotion": true,
-    "vim.useSystemClipboard": true,
-    "prettier.endOfLine": "lf",
-    "prettier.singleQuote": true,
-    "prettier.trailingComma": "es5",
-    "eslint.autoFixOnSave": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "eslint.run": "onSave",
-    "git.autofetch": true,
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "workbench.sideBar.location": "left",
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.enabled": false,
-    "window.zoomLevel": 0,
-    "typescript.format.enable": false,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.copyOnSelection": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "python.formatting.provider": "yapf",
-    "flow.enabled": false,
-    "vim.foldfix": true,
-    "liveshare.featureSet": "insiders",
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "files.associations": {
-        "*.jsx": "javascriptreact"
-    },
-    "peacock.favoriteColors": [
-        {
-            "name": "Angular Red",
-            "value": "#b52e31"
-        },
-        {
-            "name": "Auth0 Orange",
-            "value": "#eb5424"
-        },
-        {
-            "name": "Azure Blue",
-            "value": "#007fff"
-        },
-        {
-            "name": "C# Purple",
-            "value": "#68217A"
-        },
-        {
-            "name": "Gatsby Purple",
-            "value": "#639"
-        },
-        {
-            "name": "Go Cyan",
-            "value": "#5dc9e2"
-        },
-        {
-            "name": "Java Blue-Gray",
-            "value": "#557c9b"
-        },
-        {
-            "name": "JavaScript Yellow",
-            "value": "#f9e64f"
-        },
-        {
-            "name": "Mandalorian Blue",
-            "value": "#1857a4"
-        },
-        {
-            "name": "Node Green",
-            "value": "#215732"
-        },
-        {
-            "name": "React Blue",
-            "value": "#00b3e6"
-        },
-        {
-            "name": "Something Different",
-            "value": "#832561"
-        },
-        {
-            "name": "Vue Green",
-            "value": "#42b883"
+  "telemetry.enableTelemetry": false,
+  "editor.minimap.enabled": false,
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "none",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
         }
-    ],
-    "editor.tabCompletion": "on",
-    "files.exclude": {
-        "**/.direnv": true,
-        "**/.terraform": true,
-        "**/.vagrant": true,
-        "**/.wercker": true
+      }
+    ]
+  },
+  "breadcrumbs.enabled": true,
+  "workbench.colorTheme": "Nord",
+  "eslint.packageManager": "yarn",
+  "npm.packageManager": "yarn",
+  "npm.enableScriptExplorer": true,
+  "npm.exclude": "**/.wercker/**",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "Fira Code",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsx]": {
+    "editor.formatOnSave": true
+  },
+  "vim.easymotion": true,
+  "vim.useSystemClipboard": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "eslint.run": "onSave",
+  "git.autofetch": true,
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.sideBar.location": "left",
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.enabled": false,
+  "window.zoomLevel": 0,
+  "typescript.format.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.copyOnSelection": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "python.formatting.provider": "yapf",
+  "flow.enabled": false,
+  "vim.foldfix": true,
+  "liveshare.featureSet": "insiders",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    // "*.jsx": "javascriptreact",
+    ".envrc*": "shellscript"
+  },
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
     },
-    "workbench.tree.indent": 12,
-    "terminal.integrated.fontSize": 13,
-    "terraform.indexing": {
-        "enabled": false,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
-        ]
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
     },
-    "terraform.languageServer": {
-        "enabled": true,
-        "args": []
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
     },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    },
+    {
+      "name": "Auth0 Orange",
+      "value": "#eb5424"
+    },
+    {
+      "name": "C# Purple",
+      "value": "#68217A"
+    },
+    {
+      "name": "Gatsby Purple",
+      "value": "#639"
+    },
+    {
+      "name": "Go Cyan",
+      "value": "#5dc9e2"
+    },
+    {
+      "name": "Java Blue-Gray",
+      "value": "#557c9b"
+    }
+  ],
+  "editor.tabCompletion": "on",
+  "files.exclude": {
+    "**/.direnv": true,
+    "**/.terraform": true,
+    "**/.vagrant": true,
+    "**/.wercker": true
+  },
+  "workbench.tree.indent": 12,
+  "terminal.integrated.rendererType": "experimentalWebgl",
+  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.shell.osx": "/Users/abuecker/.local/bin/vscode-shell",
+  "terraform.indexing": {
+    "enabled": false,
+    "liveIndexing": false,
+    "delay": 500,
+    "exclude": [".terraform/**/*", "**/.terraform/**/*"]
+  },
+  "terraform.languageServer": {
+    "external": true,
+    "args": ["serve"]
+  },
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // },
+  "html.mirrorCursorOnMatchingTag": false,
+  "gitlens.views.repositories.branches.layout": "list",
+  "javascript.validate.enable": false,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "terminal.integrated.enableFileLinks": false
 }
