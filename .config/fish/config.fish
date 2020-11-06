@@ -34,6 +34,9 @@ source $HOME/.config/fish/aliases.fish
 #
 # Node Version Manager
 #
+# This can be kind of slow.  Profile the startup time with:
+#   fish --profile prompt.prof -ic 'fish_prompt; exit'; sort -nk 2 prompt.prof
+#
 bass source ~/.nvm/nvm.sh --no-use
 nvm use 12.13.1 2&> /dev/null
 
@@ -47,7 +50,7 @@ set -xg DOCKER_HOST "unix:////var/run/docker.sock"
 # Setup direnv
 #
 eval (direnv hook fish)
-eval (scooter env hook fish)
+# eval (scooter env hook fish)
 
 # increase the open file limit
 ulimit -n 10240
@@ -74,9 +77,18 @@ source ~/.config/fish/ssh_agent_start.fish
 [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
 
 set -gx FZF_DEFAULT_COMMAND "rg --files --follow --hidden -g '!.git'"
+
 # set -xg INITIAL_QUERY ""
 # set -xg RG_PREFIX "rg --column --line-number --no-heading --color=always --smart-case "
 # set -xg FZF_DEFAULT_COMMAND "$RG_PREFIX '$INITIAL_QUERY'" \
 #   fzf --bind "change:reload:$RG_PREFIX {q} || true" \
 #       --ansi --phony --query "$INITIAL_QUERY" \
 #       --height=50% --layout=reverse
+
+set -xg BAT_THEME Nord
+
+# Append --no-height (for neovim only)
+if test -n $NVIM_LISTEN_ADDRESS
+  set -xg FZF_DEFAULT_OPTS '--no-height'
+end
+

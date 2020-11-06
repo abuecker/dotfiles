@@ -1,0 +1,36 @@
+{
+  "diagnostic.messageTarget": "float",
+  "coc.preferences.formatOnType": false,
+  "coc.preferences.formatOnInsertLeave": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "json",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  ],
+  "diagnostic.errorSign": "✗",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.infoSign": "ⓘ",
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": "‣ ",
+  "eslint.run": "onSave",
+  "eslint.packageManager": "yarn",
+  "eslint.autoFixOnSave": true,
+  "codeLens.enable": false,
+  "suggest.enablePreselect": true,
+  "suggest.noselect": false,
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "~/dev/dotfiles/.vim/ab_snips"
+  ],
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete"
+}
