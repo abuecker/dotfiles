@@ -57,6 +57,7 @@ ulimit -n 10240
 
 # The next line enables bash completion for gcloud.
 # source '/Users/andybuecker/google-cloud-sdk/completion.bash.inc'
+set -xg CLOUDSDK_PYTHON python2
 
 # Add firefox to the path for Selenium
 set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH

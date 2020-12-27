@@ -20,20 +20,17 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'alvan/vim-closetag'
-" Plug 'vim-scripts/closetag.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'jbgutierrez/vim-better-comments'
-let g:bettercomments_language_aliases = { 'javascript': 'js' }
+let g:jsx_ext_required = 1
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-surround'
-" " Plug 'jlanzarotta/bufexplorer'
+Plug 'tpope/vim-obsession'
 Plug 'sheerun/vim-polyglot'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jiangmiao/auto-pairs'
-" Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/tComment'
 Plug 'vim-scripts/matchit.zip'
@@ -48,9 +45,6 @@ let g:nord_cursor_line_number_background = 1
 
 Plug 'airblade/vim-gitgutter'
 highlight clear SignColumn
-
-" Plug 'mattn/emmet-vim'
-" let g:user_emmet_leader_key='<C-Z>'
 
 Plug 'terryma/vim-expand-region'
 vmap v <Plug>(expand_region_expand)
@@ -195,7 +189,7 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '\.swp$', '^_.+[[dir]]', '^dist$'
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=0
 map <F3> :NERDTreeToggle<CR>
-map <leader>e   :NERDTreeToggle<CR>
+map <leader><leader>e :NERDTreeToggle<CR>
 let NERDTreeMapOpenVSplit='<leader>v'
 let NERDTreeMapOpenSplit='s'
 " close vim if the only window left open is a NERDTree
@@ -614,6 +608,8 @@ let javaScript=1
 " TextEdit might fail if hidden is not set.
 set hidden
 
+let g:coc_node_args = ['--max-old-space-size=8192']
+
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -777,6 +773,11 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-emoji'
   \] 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" ==================================
+" Coc-Explorer
+" ==================================
+:nmap <leader>e :CocCommand explorer<CR>
 
 
 " ============================================================================
