@@ -49,7 +49,9 @@ set -xg DOCKER_HOST "unix:////var/run/docker.sock"
 #
 # Setup direnv
 #
+# test -n "$NVIM_LISTEN_ADDRESS" && eval (direnv hook fish)
 eval (direnv hook fish)
+
 # eval (scooter env hook fish)
 
 # increase the open file limit

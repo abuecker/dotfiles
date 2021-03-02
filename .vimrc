@@ -19,24 +19,23 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'alvan/vim-closetag'
-Plug 'tomtom/tcomment_vim'
-let g:jsx_ext_required = 1
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-fugitive'
+Plug 'alvan/vim-closetag' "Auto close (X)HTML tags - GitHub
+Plug 'tpope/vim-commentary'
+" Plug 'tomtom/tcomment_vim' " Comments
+" let g:jsx_ext_required = 1
+Plug 'christoomey/vim-tmux-navigator' " integrate with tmux navigation
+Plug 'tpope/vim-fugitive' " Git integration
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-obsession'
-Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround' " Surroundings
+Plug 'tpope/vim-obsession' " Session restoration
+Plug 'sheerun/vim-polyglot' " Syntax highlighting
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jiangmiao/auto-pairs'
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/tComment'
+Plug 'jiangmiao/auto-pairs' "Insert or delete brackets, parens, quotes in pair.
+Plug 'vim-scripts/L9' " Utility functions and commands for programming in Vim.
 Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/mru.vim'
+" Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/loremipsum'
-
 Plug 'arcticicestudio/nord-vim'
 let g:nord_italic = 1
 let g:nord_underline = 1
@@ -88,6 +87,9 @@ Plug 'junegunn/fzf.vim'
 "   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
 "   \ 'do': 'make install'
 " \}
+
+" Plug 'frazrepo/vim-rainbow' " rainbow curlies"
+" let g:rainbow_active = 1
 
 call plug#end()
 
@@ -769,16 +771,19 @@ nmap <silent> gr <Plug>(coc-references)
 
 let g:coc_global_extensions = [
   \ 'coc-snippets', 'coc-git', 'coc-react-refactor', 'coc-styled-components',
-  \ 'coc-python', 'coc-html', 'coc-json', 'coc-css', 'coc-yaml',
-  \ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-emoji'
+  \ 'coc-jedi', 'coc-html', 'coc-json', 'coc-yaml',
+  \ 'coc-prettier', 'coc-eslint', 'coc-tsserver', 'coc-emoji',
+  \ 'coc-swagger', 'coc-css', 'coc-stylelintplus'
   \] 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
+command -nargs=0 Swagger :CocCommand swagger.render
 " ==================================
 " Coc-Explorer
 " ==================================
 :nmap <leader>e :CocCommand explorer<CR>
 
+
+autocmd BufWritePre *.py 0,$!yapf
 
 " ============================================================================
 " FZF {{{

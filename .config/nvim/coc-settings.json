@@ -39,5 +39,11 @@
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.enableVimDevicons": false,
-  "explorer.filename.colored.enable": true
+  "explorer.filename.colored.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "wxss.validate": false,
+  "stylelintplus.autoFixOnSave": true,
+  "stylelintplus.cssInJs": true
 }
