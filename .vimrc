@@ -811,3 +811,7 @@ autocmd BufWritePre *.py 0,$!yapf
 "   \ 'marker':  ['fg', 'Keyword'],
 "   \ 'spinner': ['fg', 'Label'],
 "   \ 'header':  ['fg', 'Comment'] }
+"
+
+" Set bottom command line height to 1
+set cmdheight=1
