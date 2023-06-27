@@ -1,19 +1,7 @@
 {
   "diagnostic.messageTarget": "float",
   "coc.preferences.formatOnType": false,
-  "coc.preferences.formatOnInsertLeave": false,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "css",
-    "markdown",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "json",
-    "typescript",
-    "typescript.tsx",
-    "typescriptreact"
-  ],
+  "coc.preferences.formatOnSave": true,
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "⚠",
   "diagnostic.infoSign": "ⓘ",
@@ -22,10 +10,12 @@
   "eslint.run": "onSave",
   "eslint.packageManager": "yarn",
   "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
   "eslint.codeAction.disableRuleComment": {
     "enable": true,
     "location": "separateLine"
   },
+  "eslint.workingDirectories": ["./ui", "./functions", "."],
   "codeLens.enable": false,
   "suggest.enablePreselect": true,
   "suggest.noselect": false,
@@ -38,12 +28,12 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "explorer.icon.enableNerdfont": true,
-  "explorer.icon.enableVimDevicons": false,
+  "explorer.icon.source": "vim-devicons",
   "explorer.filename.colored.enable": true,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "wxss.validate": false,
   "stylelintplus.autoFixOnSave": true,
-  "stylelintplus.cssInJs": true
+  "stylelintplus.cssInJs": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

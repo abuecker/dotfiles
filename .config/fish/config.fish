@@ -1,16 +1,22 @@
 # Enable vi movement
 fish_vi_key_bindings
 
+set -gx TERM xterm-256color
+
 # update the path
+fish_add_path 
 set -x PATH $HOME/local/bin \
   ~/.cargo/bin \
+  /usr/local/opt/openjdk/bin \
   /usr/local/bin \
   ./node_modules/.bin \
-  ~/Library/Python/2.7/bin \
-  ~/Library/Python/3.7/bin \
+  # ~/Library/Python/2.7/bin \
+  # ~/Library/Python/3.7/bin \
   /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
   ~/.local/bin \
   $PATH
+
+
 
 set -x DEVELOPMENT true
 
@@ -38,7 +44,7 @@ source $HOME/.config/fish/aliases.fish
 #   fish --profile prompt.prof -ic 'fish_prompt; exit'; sort -nk 2 prompt.prof
 #
 bass source ~/.nvm/nvm.sh --no-use
-nvm use 12.13.1 2&> /dev/null
+nvm use 16.14.0 2&> /dev/null
 
 #
 # Docker
@@ -95,3 +101,13 @@ if test -n $NVIM_LISTEN_ADDRESS
   set -xg FZF_DEFAULT_OPTS '--no-height'
 end
 
+fish_add_path /usr/local/sbin
+
+# pyenv
+fish_add_path ~/.pyenv/shims
+pyenv init - | source
+
+
+# The next line updates PATH for the Google Cloud SDK.
+set -xg CLOUDSDK_PYTHON python3
+if [ -f '/Users/abuecker/local/opt/google-cloud-sdk/path.fish.inc' ]; . '/Users/abuecker/local/opt/google-cloud-sdk/path.fish.inc'; end

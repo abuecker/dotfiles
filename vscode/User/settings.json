@@ -152,5 +152,8 @@
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
-  "terminal.integrated.enableFileLinks": false
+  "terminal.integrated.enableFileLinks": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  }
 }

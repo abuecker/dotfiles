@@ -1,9 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/Users/abuecker/\x2epyenv
 SETUVAR __fish_classic_git_prompt_initialized:\x1d
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
-SETUVAR __fish_initialized:3100
+SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:006363
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:009999
@@ -32,4 +33,5 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/Users/abuecker/\x2eyarn/bin\x1e/usr/local/opt/fzf/bin
+SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/usr/local/opt/openjdk/bin\x1e/Users/abuecker/\x2epyenv/shims\x1e/Users/abuecker/\x2epyenv/bin\x1e/usr/local/sbin\x1e/Users/abuecker/\x2eyarn/bin\x1e/usr/local/opt/fzf/bin
