@@ -1,3 +1,6 @@
 fish_history
 .config/fish/fishd.*
 .vim/view
+.config/fish/themes
+*.bu
+.vim/session
