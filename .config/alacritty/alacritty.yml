@@ -2,7 +2,8 @@ env:
   TERM: xterm-256color
 
 import:
-  - /Users/abuecker/.config/alacritty/nord.yml
+  # - /Users/andy.buecker/.config/alacritty/nord.yml
+  - /Users/andy.buecker/.config/alacritty/rose-pine.yml
 
 font:
   normal:
@@ -35,9 +36,7 @@ font:
   #  x: 0
   #  y: 0
 
-
-# If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
-#
+  # If `true`, bold text is drawn using the bright color variants.
+  #draw_bold_text_with_bright_colors: false
+  #
   size: 14
-

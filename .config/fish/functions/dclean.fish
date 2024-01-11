@@ -1,3 +1,3 @@
 function dclean --description 'Clean up leftover docker runs'
-	docker rm (docker ps -qa)
+	docker rm -f (docker ps -qa)
 end

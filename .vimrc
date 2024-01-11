@@ -35,7 +35,6 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jiangmiao/auto-pairs' "Insert or delete brackets, parens, quotes in pair.
 Plug 'vim-scripts/L9' " Utility functions and commands for programming in Vim.
 Plug 'vim-scripts/matchit.zip'
-" Plug 'vim-scripts/mru.vim'
 Plug 'vim-scripts/loremipsum'
 Plug 'arcticicestudio/nord-vim'
 let g:nord_italic = 1
@@ -52,7 +51,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 Plug 'itchyny/lightline.vim'
 Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'direnv/direnv.vim'
+"Plug 'direnv/direnv.vim'
 
 " Icons and colors
 Plug 'ryanoasis/vim-devicons'
@@ -98,6 +97,7 @@ Plug 'github/copilot.vim'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 
 Plug 'earthly/earthly.vim', { 'branch': 'main' }
+autocmd FileType Earthfile setlocal commentstring=#\ %s
 
 call plug#end()
 
@@ -114,7 +114,7 @@ set linebreak         " wrap lines at convenient points
 set nobackup          " no backup
 set noswapfile        " no swap files
 set hidden            " hide buffers when not displayed
-" set background=dark " use dark soloarized theme
+set background=dark   " use dark soloarized theme
 colorscheme nord      " set the color scheme
 highlight Comment cterm=italic
 set cursorline        " highlight the current line
@@ -149,8 +149,8 @@ nmap <D-v> :call setreg("\"",system("pbpaste"))<CR>p
 "----------------------------------------
 " highlight content over 80 columns
 "----------------------------------------
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
 
 "----------------------------------------
 " set the cursor shape for terminal editing
@@ -789,6 +789,7 @@ set foldlevelstart=99 "start file with all folds opened
 "   \] 
 "command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "command -nargs=0 Swagger :CocCommand swagger.render
+
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -990,3 +991,6 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " Set bottom command line height to 1
 set cmdheight=1
+
+" `psql` edit mode
+au BufRead /tmp/psql.edit.* set syntax=sql

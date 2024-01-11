@@ -1,11 +1,17 @@
+# fish_config theme choose "Rosé Pine {Dawn, Moon}"
+fish_config theme choose "Rosé Pine"
+
 # Enable vi movement
 fish_vi_key_bindings
 
+# set the default terminfo
 set -gx TERM xterm-256color
 
 # update the path
 fish_add_path 
 set -x PATH $HOME/local/bin \
+  ~/.local/bin \
+  ~/bin \
   ~/.cargo/bin \
   /usr/local/opt/openjdk/bin \
   /usr/local/bin \
