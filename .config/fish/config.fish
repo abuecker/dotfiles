@@ -26,9 +26,6 @@ set -x PATH $HOME/local/bin \
 
 set -x DEVELOPMENT true
 
-# to remove the error about the curl libcurl mismatch
-# set -x DYLD_LIBRARY_PATH /usr/local/Cellar/curl/7.37.0/lib/
-
 #
 # clear the fish welcome message
 #
@@ -69,18 +66,11 @@ eval (direnv hook fish)
 # increase the open file limit
 ulimit -n 10240
 
-# The next line enables bash completion for gcloud.
-# source '/Users/andybuecker/google-cloud-sdk/completion.bash.inc'
-set -xg CLOUDSDK_PYTHON python2
 
 # Add firefox to the path for Selenium
 set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH
 
 set -x EDITOR /usr/local/bin/nvim
-
-# The next line updates PATH for the Google Cloud SDK.
-set -x GCLOUD_SDK_PATH /Users/abuecker/local/opt/google-cloud-sdk
-set -x PATH $GCLOUD_SDK_PATH/bin $PATH
 
 # Colorized manpages
 set -gx  MANPAGER "/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
@@ -109,11 +99,16 @@ end
 
 fish_add_path /usr/local/sbin
 
+fish_add_path ~/dev/arcanist/bin
+
 # pyenv
 fish_add_path ~/.pyenv/shims
 pyenv init - | source
 
+# (Epic) NVS
+fish_add_path ~/.nvs
 
-# The next line updates PATH for the Google Cloud SDK.
-set -xg CLOUDSDK_PYTHON python3
-if [ -f '/Users/abuecker/local/opt/google-cloud-sdk/path.fish.inc' ]; . '/Users/abuecker/local/opt/google-cloud-sdk/path.fish.inc'; end
+# psql
+set -gx PAGER 'vim -R -c "set syntax=dbout" -'
+
+
