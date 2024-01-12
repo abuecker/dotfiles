@@ -1,4 +1,3 @@
-# fish_config theme choose "Rosé Pine {Dawn, Moon}"
 fish_config theme choose "Rosé Pine"
 
 # Enable vi movement
@@ -46,7 +45,7 @@ source $HOME/.config/fish/aliases.fish
 # This can be kind of slow.  Profile the startup time with:
 #   fish --profile prompt.prof -ic 'fish_prompt; exit'; sort -nk 2 prompt.prof
 #
-bass source ~/.nvm/nvm.sh --no-use
+# bass source ~/.nvm/nvm.sh --no-use
 nvm use 16.14.0 2&> /dev/null
 
 #
