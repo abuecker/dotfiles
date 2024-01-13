@@ -67,27 +67,50 @@ local lsp_servers = {
 
 require("lazy").setup({
 	{
-		"dracula/vim",
-		name = "dracula",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		opts = {
+			flavour = "mocha",
+		},
 		config = function()
-			-- load the colorscheme here
-			vim.cmd("colorscheme dracula")
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 
-	-- -- Rose Pine theme
 	-- {
-	-- 	"rose-pine/neovim",
-	-- 	name = "rose-pine",
+	-- 	"nordtheme/vim",
+	-- 	name = "nord",
 	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
 	-- 	priority = 1000, -- make sure to load this before all the other start plugins
 	-- 	config = function()
 	-- 		-- load the colorscheme here
-	-- 		vim.cmd("colorscheme rose-pine")
+	-- 		vim.cmd("colorscheme nord")
 	-- 	end,
 	-- },
+	--
+	-- {
+	-- 	"dracula/vim",
+	-- 	name = "dracula",
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		vim.cmd("colorscheme dracula")
+	-- 	end,
+	-- },
+
+	-- Rose Pine theme
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd("colorscheme rose-pine")
+		end,
+	},
 
 	-- configure the LSP
 	{

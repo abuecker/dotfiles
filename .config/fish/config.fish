@@ -1,5 +1,6 @@
+fish_config theme choose "Catppuccin Mocha"
 # fish_config theme choose "Rosé Pine"
-fish_config theme choose "Dracula Official"
+# fish_config theme choose "Dracula Official"
 
 # Enable vi movement
 fish_vi_key_bindings
@@ -110,4 +111,3 @@ fish_add_path ~/.nvs
 
 # psql
 set -gx PAGER 'vim -R -c "set syntax=dbout" -'
-
