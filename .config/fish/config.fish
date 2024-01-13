@@ -1,4 +1,5 @@
-fish_config theme choose "Rosé Pine"
+# fish_config theme choose "Rosé Pine"
+fish_config theme choose "Dracula Official"
 
 # Enable vi movement
 fish_vi_key_bindings
@@ -7,7 +8,7 @@ fish_vi_key_bindings
 set -gx TERM xterm-256color
 
 # update the path
-fish_add_path 
+fish_add_path
 set -x PATH $HOME/local/bin \
   ~/.local/bin \
   ~/bin \
@@ -109,5 +110,4 @@ fish_add_path ~/.nvs
 
 # psql
 set -gx PAGER 'vim -R -c "set syntax=dbout" -'
-
 

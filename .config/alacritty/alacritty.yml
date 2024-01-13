@@ -3,8 +3,8 @@ env:
 
 import:
   # - /Users/andy.buecker/.config/alacritty/nord.yml
-  - /Users/andy.buecker/.config/alacritty/rose-pine.yml
-  # - /Users/andy.buecker/.config/alacritty/dracula.yml
+  # - /Users/andy.buecker/.config/alacritty/rose-pine.yml
+  - /Users/andy.buecker/.config/alacritty/dracula.yml
 
 font:
   normal:

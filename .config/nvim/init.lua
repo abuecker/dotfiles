@@ -41,16 +41,12 @@ local lsp_servers = {
 		setup = {
 			settings = {
 				Lua = {
-					diagnostics = {
-						globals = { "vim" },
+					completion = {
+						callSnippet = "Replace",
 					},
-				},
-			},
-			commands = {
-				Format = {
-					function()
-						require("stylua-nvim").format_file()
-					end,
+					-- diagnostics = {
+					-- 	globals = { "vim" },
+					-- },
 				},
 			},
 		},
@@ -65,31 +61,33 @@ local lsp_servers = {
 	{ "biome", setup = {} },
 	{ "yamlls", setup = {} },
 	{ "jsonls", setup = {} },
+	{ "terraformls", setup = {} },
+	{ "marksman", setup = {} },
 }
 
 require("lazy").setup({
-	-- {
-	-- 	"dracula/vim",
-	-- 	name = "dracula",
-	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	-- 	priority = 1000, -- make sure to load this before all the other start plugins
-	-- 	config = function()
-	-- 		-- load the colorscheme here
-	-- 		vim.cmd("colorscheme dracula")
-	-- 	end,
-	-- },
-
-	-- Rose Pine theme
 	{
-		"rose-pine/neovim",
-		name = "rose-pine",
+		"dracula/vim",
+		name = "dracula",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
 			-- load the colorscheme here
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd("colorscheme dracula")
 		end,
 	},
+
+	-- -- Rose Pine theme
+	-- {
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	config = function()
+	-- 		-- load the colorscheme here
+	-- 		vim.cmd("colorscheme rose-pine")
+	-- 	end,
+	-- },
 
 	-- configure the LSP
 	{
@@ -97,6 +95,9 @@ require("lazy").setup({
 		lazy = false,
 		priority = 78,
 		dependencies = {
+			-- For developing Neovim lua
+			{ "folke/neodev.nvim", opts = {} },
+
 			-- auto install LSP servers
 			{ "williamboman/mason.nvim", lazy = false, priority = 80 },
 			{ "williamboman/mason-lspconfig.nvim", lazy = false, priority = 79 },
@@ -209,7 +210,14 @@ require("lazy").setup({
 					"python",
 					"yaml",
 					"rust",
+					"terraform",
+					"git_config",
+					"gitattributes",
+					"gitcommit",
+					"gitignore",
+					"markdown",
 				},
+				ignore_install = {},
 				sync_install = false,
 				auto_install = true,
 				highlight = { enable = true },
@@ -263,10 +271,11 @@ require("lazy").setup({
 	{
 		"ckipp01/stylua-nvim",
 		build = "cargo install stylua",
-		config = function()
-			-- setup 'format on save'
-			vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
-		end,
+		opts = {},
+		-- config = function()
+		-- 	-- setup 'format on save'
+		-- 	-- vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
+		-- end,
 	},
 	"tpope/vim-commentary",
 	"tpope/vim-surround",
@@ -286,13 +295,25 @@ require("lazy").setup({
 			"nvim-telescope/telescope-media-files.nvim",
 		},
 		config = function()
+			require("telescope").setup({
+				pickers = {},
+			})
+
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+			vim.keymap.set("n", "<leader>gf", builtin.git_files, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
-			require("telescope").load_extension("media_files")
+			vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations, {})
+			vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, {})
+			vim.keymap.set("n", "<leader>gt", builtin.lsp_type_definitions, {})
+			vim.keymap.set("n", "<leader>ts", builtin.treesitter, {})
+			vim.keymap.set("n", "<leader>ws", builtin.lsp_workspace_symbols, {})
+			vim.keymap.set("n", "<leader>ds", builtin.lsp_document_symbols, {})
+			vim.keymap.set("n", "<leader>rf", builtin.lsp_references, {})
+			vim.keymap.set("n", "<leader>in", builtin.lsp_incoming_calls, {})
+			vim.keymap.set("n", "<leader>ou", builtin.lsp_outgoing_calls, {})
 		end,
 	},
 
@@ -306,7 +327,34 @@ require("lazy").setup({
 			vim.opt.termguicolors = true
 
 			-- empty setup using defaults
-			require("nvim-tree").setup()
+			require("nvim-tree").setup({
+				filters = {
+					dotfiles = true,
+				},
+				modified = {
+					enable = true,
+				},
+				view = {
+					width = 40,
+				},
+				renderer = {
+					add_trailing = true,
+					group_empty = true,
+					root_folder_label = ":t",
+					highlight_git = true,
+					highlight_opened_files = "name",
+					highlight_modified = "icon",
+					highlight_clipboard = "name",
+					indent_markers = {
+						enable = true,
+						inline_arrows = true,
+					},
+				},
+			})
+
+			vim.keymap.set("n", "<leader>e", function()
+				require("nvim-tree.api").tree.toggle()
+			end, {})
 		end,
 	},
 
@@ -343,7 +391,10 @@ require("lazy").setup({
 	},
 	{
 		"folke/trouble.nvim",
-		opts = {},
+		opts = {
+			auto_open = false,
+			auto_close = false,
+		},
 		config = function()
 			vim.keymap.set("n", "<leader>xx", function()
 				require("trouble").toggle()
@@ -369,6 +420,65 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {},
+	},
+	{
+		"filipdutescu/renamer.nvim",
+		branch = "master",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("renamer").setup()
+			vim.keymap.set("i", "<F2>", function()
+				require("renamer").rename()
+			end, { noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>rn", function()
+				require("renamer").rename()
+			end, { noremap = true, silent = true })
+			vim.keymap.set("v", "<leader>rn", function()
+				require("renamer").rename()
+			end, { noremap = true, silent = true })
+		end,
+	},
+	{
+		"mhartington/formatter.nvim",
+		config = function()
+			require("formatter").setup({
+				-- Enable or disable logging
+				logging = true,
+				-- Set the log level
+				log_level = vim.log.levels.WARN,
+				-- All formatter configurations are opt-in
+				filetype = {
+					lua = {
+						require("formatter.filetypes.lua").stylua,
+					},
+					javascript = {
+						require("formatter.filetypes.javascript").prettier,
+					},
+					javascriptreact = {
+						require("formatter.filetypes.javascriptreact").prettier,
+					},
+					typescript = {
+						require("formatter.filetypes.typescript").prettier,
+					},
+					typescriptreact = {
+						require("formatter.filetypes.typescriptreact").prettier,
+					},
+					["*"] = {
+						require("formatter.filetypes.any").remove_trailing_whitespace,
+					},
+				},
+			})
+
+			-- Format on save
+			vim.cmd([[
+        augroup FormatAutogroup
+          autocmd!
+          autocmd BufWritePost * FormatWrite
+        augroup END
+      ]])
+		end,
 	},
 })
 
@@ -563,3 +673,19 @@ vim.cmd([[
   " Startup autoread silently
   silent! execute WatchForChanges("*",autoreadargs)
 ]])
+
+-- -----------------------------
+--  Diff the current buffer with saved on disc
+-- -----------------------------
+vim.cmd([[
+  function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+  endfunction
+  com! DiffSaved call s:DiffWithSaved()
+]])
+
+vim.keymap.set("v", "<leader>s", '"hy:%s/<C-r>h/<C-r>h/g<left><left>', {})
