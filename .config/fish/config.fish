@@ -111,3 +111,7 @@ fish_add_path ~/.nvs
 
 # psql
 set -gx PAGER 'vim -R -c "set syntax=dbout" -'
+
+starship init fish | source
+
+export BAT_THEME="Catppuccin-mocha"

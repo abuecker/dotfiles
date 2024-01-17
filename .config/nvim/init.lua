@@ -58,7 +58,7 @@ local lsp_servers = {
 	{ "docker_compose_language_service", setup = {} },
 	{ "dockerls", setup = {} },
 	{ "eslint", setup = {} },
-	{ "biome", setup = {} },
+	-- { "biome", setup = {} },
 	{ "yamlls", setup = {} },
 	{ "jsonls", setup = {} },
 	{ "terraformls", setup = {} },
@@ -72,6 +72,9 @@ require("lazy").setup({
 		priority = 1000,
 		opts = {
 			flavour = "mocha",
+			integrations = {
+				nvimtree = true,
+			},
 		},
 		config = function()
 			vim.cmd.colorscheme("catppuccin")
@@ -352,13 +355,15 @@ require("lazy").setup({
 			-- empty setup using defaults
 			require("nvim-tree").setup({
 				filters = {
-					dotfiles = true,
+					dotfiles = false,
 				},
 				modified = {
 					enable = true,
 				},
 				view = {
 					width = 40,
+					centralize_selection = true,
+					signcolumn = "yes",
 				},
 				renderer = {
 					add_trailing = true,
@@ -372,12 +377,32 @@ require("lazy").setup({
 						enable = true,
 						inline_arrows = true,
 					},
+					highlight_diagnostics = true,
+					icons = {
+						git_placement = "signcolumn",
+					},
+					update_focused_file = {
+						enable = true,
+					},
+					diagnostics = {
+						enable = true,
+					},
+					modified = {
+						enable = true,
+					},
 				},
 			})
 
 			vim.keymap.set("n", "<leader>e", function()
-				require("nvim-tree.api").tree.toggle()
+				require("nvim-tree.api").tree.toggle({
+					path = "<args>",
+					find_file = true,
+					update_root = false,
+					focus = true,
+				})
 			end, {})
+
+			-- vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 
@@ -390,6 +415,10 @@ require("lazy").setup({
 		end,
 	},
 
+	-- {
+	-- 	"feline-nvim/feline.nvim",
+	-- 	opts = {},
+	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
