@@ -110,7 +110,7 @@ pyenv init - | source
 fish_add_path ~/.nvs
 
 # psql
-set -gx PAGER 'vim -R -c "set syntax=dbout" -'
+# set -gx PAGER 'vim -R -c "set syntax=dbout" -'
 
 starship init fish | source
 

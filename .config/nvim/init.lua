@@ -57,12 +57,23 @@ local lsp_servers = {
 	{ "ansiblels", setup = {} },
 	{ "docker_compose_language_service", setup = {} },
 	{ "dockerls", setup = {} },
-	{ "eslint", setup = {} },
+	{
+		"eslint",
+		setup = {
+			on_attach = function(_, bufnr)
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					buffer = bufnr,
+					command = "EslintFixAll",
+				})
+			end,
+		},
+	},
 	-- { "biome", setup = {} },
 	{ "yamlls", setup = {} },
 	{ "jsonls", setup = {} },
 	{ "terraformls", setup = {} },
 	{ "marksman", setup = {} },
+	{ "css", setup = {} },
 }
 
 require("lazy").setup({
@@ -340,6 +351,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>rf", builtin.lsp_references, {})
 			vim.keymap.set("n", "<leader>in", builtin.lsp_incoming_calls, {})
 			vim.keymap.set("n", "<leader>ou", builtin.lsp_outgoing_calls, {})
+			vim.keymap.set("n", "<leader>fd", builtin.diagnostics, {})
 		end,
 	},
 
@@ -356,9 +368,6 @@ require("lazy").setup({
 			require("nvim-tree").setup({
 				filters = {
 					dotfiles = false,
-				},
-				modified = {
-					enable = true,
 				},
 				view = {
 					width = 40,
@@ -381,15 +390,15 @@ require("lazy").setup({
 					icons = {
 						git_placement = "signcolumn",
 					},
-					update_focused_file = {
-						enable = true,
-					},
-					diagnostics = {
-						enable = true,
-					},
-					modified = {
-						enable = true,
-					},
+				},
+				update_focused_file = {
+					enable = true,
+				},
+				diagnostics = {
+					enable = true,
+				},
+				modified = {
+					enable = true,
 				},
 			})
 
@@ -446,6 +455,7 @@ require("lazy").setup({
 		opts = {
 			auto_open = false,
 			auto_close = false,
+			use_diagnostic_signs = true,
 		},
 		config = function()
 			vim.keymap.set("n", "<leader>xx", function()
