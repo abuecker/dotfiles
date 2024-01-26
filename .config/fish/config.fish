@@ -48,7 +48,7 @@ source $HOME/.config/fish/aliases.fish
 #   fish --profile prompt.prof -ic 'fish_prompt; exit'; sort -nk 2 prompt.prof
 #
 # bass source ~/.nvm/nvm.sh --no-use
-nvm use 16.14.0 2&> /dev/null
+nvm use 18.19.0 2&> /dev/null
 
 #
 # Docker

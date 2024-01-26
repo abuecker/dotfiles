@@ -73,7 +73,7 @@ local lsp_servers = {
 	{ "jsonls", setup = {} },
 	{ "terraformls", setup = {} },
 	{ "marksman", setup = {} },
-	{ "css", setup = {} },
+	{ "cssls", setup = {} },
 }
 
 require("lazy").setup({
@@ -314,7 +314,19 @@ require("lazy").setup({
 		-- 	-- vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
 		-- end,
 	},
-	"tpope/vim-commentary",
+
+	{
+		"numToStr/Comment.nvim",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+		config = function()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+		lazy = false,
+	},
 	"tpope/vim-surround",
 	-- vim session restoration
 	{
@@ -371,7 +383,6 @@ require("lazy").setup({
 				},
 				view = {
 					width = 40,
-					centralize_selection = true,
 					signcolumn = "yes",
 				},
 				renderer = {
@@ -416,6 +427,7 @@ require("lazy").setup({
 	},
 
 	{ "github/copilot.vim" },
+
 	{
 		"earthly/earthly.vim",
 		branch = "main",
@@ -430,10 +442,13 @@ require("lazy").setup({
 	-- },
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"catppuccin/nvim",
+		},
 		opts = {
 			options = {
 				-- ignore_focus = true,
-				theme = "dracula",
+				theme = "catppuccin",
 			},
 		},
 	},
@@ -540,6 +555,34 @@ require("lazy").setup({
           autocmd BufWritePost * FormatWrite
         augroup END
       ]])
+		end,
+	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	},
+
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({})
+
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 		end,
 	},
 })
