@@ -35,47 +35,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local lsp_servers = {
-	{
-		"lua_ls",
-		setup = {
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace",
-					},
-					-- diagnostics = {
-					-- 	globals = { "vim" },
-					-- },
-				},
-			},
-		},
-	},
-	{ "pyright", setup = {} },
-	{ "tsserver", setup = {} },
-	{ "rust_analyzer", setup = {} },
-	{ "ansiblels", setup = {} },
-	{ "docker_compose_language_service", setup = {} },
-	{ "dockerls", setup = {} },
-	{
-		"eslint",
-		setup = {
-			on_attach = function(_, bufnr)
-				vim.api.nvim_create_autocmd("BufWritePre", {
-					buffer = bufnr,
-					command = "EslintFixAll",
-				})
-			end,
-		},
-	},
-	-- { "biome", setup = {} },
-	{ "yamlls", setup = {} },
-	{ "jsonls", setup = {} },
-	{ "terraformls", setup = {} },
-	{ "marksman", setup = {} },
-	{ "cssls", setup = {} },
-}
-
 require("lazy").setup({
 	{
 		"catppuccin/nvim",
@@ -147,10 +106,78 @@ require("lazy").setup({
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			for _, server in pairs(lsp_servers) do
-				server.setup.capabilities = capabilities
-				lspconfig[server[1]].setup(server.setup)
-			end
+			lspconfig["lua_ls"].setup({
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+						-- diagnostics = {
+						-- 	globals = { "vim" },
+						-- },
+					},
+					capabilities = capabilities,
+				},
+			})
+
+			lspconfig["pyright"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["tsserver"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["rust_analyzer"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["ansiblels"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["docker_compose_language_service"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["dockerls"].setup({
+				capabilities = capabilities,
+			})
+
+			local root_dir =
+				require("lspconfig/util").root_pattern(".yarnrc.yml", "package.json", "tsconfig.json", ".git")
+			lspconfig["eslint"].setup({
+				capabilities = capabilities,
+				on_attach = function(_, bufnr)
+					vim.api.nvim_create_autocmd("BufWritePre", {
+						buffer = bufnr,
+						command = "EslintFixAll",
+					})
+				end,
+				packageManager = "yarn",
+				useESLintClass = true,
+				root_dir = root_dir,
+			})
+
+			lspconfig["yamlls"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["jsonls"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["terraformls"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["marksman"].setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig["cssls"].setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 
