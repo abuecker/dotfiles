@@ -563,11 +563,32 @@ require("lazy").setup({
 					javascriptreact = {
 						require("formatter.filetypes.javascriptreact").prettier,
 					},
+					json = {
+						require("formatter.filetypes.json").prettier,
+					},
 					typescript = {
 						require("formatter.filetypes.typescript").prettier,
 					},
 					typescriptreact = {
 						require("formatter.filetypes.typescriptreact").prettier,
+					},
+					markdown = {
+						require("formatter.filetypes.markdown").prettier,
+					},
+					yaml = {
+						require("formatter.filetypes.yaml").prettier,
+					},
+					python = {
+						require("formatter.filetypes.python").black,
+					},
+					ruby = {
+						require("formatter.filetypes.ruby").rubocop,
+					},
+					rust = {
+						require("formatter.filetypes.rust").rustfmt,
+					},
+					terraform = {
+						require("formatter.filetypes.terraform").terraformfmt,
 					},
 					["*"] = {
 						require("formatter.filetypes.any").remove_trailing_whitespace,

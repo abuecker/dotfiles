@@ -1,6 +1,6 @@
 [user]
 	name = Andy Buecker
-	email = andy@48s.io
+	email = andy@tacorat.club
 [core]
 	excludesfile = /Users/abuecker/.gitignore_global
 	editor = /usr/local/bin/nvim

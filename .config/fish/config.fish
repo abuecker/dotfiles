@@ -54,7 +54,7 @@ nvm use 18.19.0 2&> /dev/null
 # Docker
 #
 # set -gx DOCKER_HOST tcp://192.168.100.100:2376
-set -xg DOCKER_HOST "unix:////var/run/docker.sock"
+# set -xg DOCKER_HOST "unix:////var/run/docker.sock"
 
 #
 # Setup direnv
@@ -115,3 +115,8 @@ fish_add_path ~/.nvs
 starship init fish | source
 
 export BAT_THEME="Catppuccin-mocha"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc' ]; . '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc'; end
+
+# rvm default
