@@ -5,6 +5,8 @@ fish_config theme choose "Catppuccin Mocha"
 # Enable vi movement
 fish_vi_key_bindings
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # set the default terminfo
 set -gx TERM xterm-256color
 
@@ -22,8 +24,6 @@ set -x PATH $HOME/local/bin \
   /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
   ~/.local/bin \
   $PATH
-
-
 
 set -x DEVELOPMENT true
 
@@ -98,6 +98,9 @@ if test -n $NVIM_LISTEN_ADDRESS
   set -xg FZF_DEFAULT_OPTS '--no-height'
 end
 
+# Set up fzf key bindings
+fzf --fish | source
+
 fish_add_path /usr/local/sbin
 
 fish_add_path ~/dev/arcanist/bin
@@ -120,3 +123,6 @@ export BAT_THEME="Catppuccin-mocha"
 if [ -f '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc' ]; . '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc'; end
 
 # rvm default
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+

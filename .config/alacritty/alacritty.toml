@@ -1,7 +1,3 @@
-import = [
-  #"/Users/andy.buecker/.config/alacritty/rose-pine.toml",
-  "/Users/andy.buecker/.config/alacritty/catppuccin-mocha.toml"
-]
 
 [env]
 TERM = "xterm-256color"
@@ -28,3 +24,9 @@ style = "Regular"
 [font.offset]
 x = 0
 y = 0
+
+[general]
+import = [
+  #"/Users/andy.buecker/.config/alacritty/rose-pine.toml",
+  "/Users/andy.buecker/.config/alacritty/catppuccin-mocha.toml"
+]
