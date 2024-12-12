@@ -5,7 +5,7 @@ fish_config theme choose "Catppuccin Mocha"
 # Enable vi movement
 fish_vi_key_bindings
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/usr/local/homebrew/bin/brew shellenv)"
 
 # set the default terminfo
 set -gx TERM xterm-256color
@@ -13,17 +13,17 @@ set -gx TERM xterm-256color
 # update the path
 fish_add_path
 set -x PATH $HOME/local/bin \
-  ~/.local/bin \
-  ~/bin \
-  ~/.cargo/bin \
-  /usr/local/opt/openjdk/bin \
-  /usr/local/bin \
-  ./node_modules/.bin \
-  # ~/Library/Python/2.7/bin \
-  # ~/Library/Python/3.7/bin \
-  /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
-  ~/.local/bin \
-  $PATH
+    ~/.local/bin \
+    ~/bin \
+    ~/.cargo/bin \
+    /usr/local/opt/openjdk/bin \
+    /usr/local/bin \
+    ./node_modules/.bin \
+    # ~/Library/Python/2.7/bin \
+    # ~/Library/Python/3.7/bin \
+    /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
+    ~/.local/bin \
+    $PATH
 
 set -x DEVELOPMENT true
 
@@ -48,7 +48,7 @@ source $HOME/.config/fish/aliases.fish
 #   fish --profile prompt.prof -ic 'fish_prompt; exit'; sort -nk 2 prompt.prof
 #
 # bass source ~/.nvm/nvm.sh --no-use
-nvm use 18.19.0 2&> /dev/null
+nvm use 18.19.0 2&>/dev/null
 
 #
 # Docker
@@ -74,9 +74,7 @@ set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH
 set -x EDITOR /usr/local/bin/nvim
 
 # Colorized manpages
-set -gx  MANPAGER "/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
-
-source ~/.config/fish/ssh_agent_start.fish
+set -gx MANPAGER "/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
 
 # tabtab source for packages
 # uninstall by removing these lines
@@ -95,7 +93,7 @@ set -xg BAT_THEME Nord
 
 # Append --no-height (for neovim only)
 if test -n $NVIM_LISTEN_ADDRESS
-  set -xg FZF_DEFAULT_OPTS '--no-height'
+    set -xg FZF_DEFAULT_OPTS --no-height
 end
 
 # Set up fzf key bindings
@@ -103,14 +101,12 @@ fzf --fish | source
 
 fish_add_path /usr/local/sbin
 
-fish_add_path ~/dev/arcanist/bin
-
 # pyenv
-fish_add_path ~/.pyenv/shims
-pyenv init - | source
+#fish_add_path ~/.pyenv/shims
+#pyenv init - | source
 
 # (Epic) NVS
-fish_add_path ~/.nvs
+#fish_add_path ~/.nvs
 
 # psql
 # set -gx PAGER 'vim -R -c "set syntax=dbout" -'
@@ -120,9 +116,15 @@ starship init fish | source
 export BAT_THEME="Catppuccin-mocha"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc' ]; . '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc' ]
+    . '/Users/abuecker/.local/opt/google-cloud-sdk/path.fish.inc'
+end
 
 # rvm default
+
+# php global composer
+set -x PATH ~/.composer/vendor/bin $PATH
+
+# Volta
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
-
