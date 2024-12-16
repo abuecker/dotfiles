@@ -31,6 +31,17 @@ return {
           ["<cr>"] = "open_with_window_picker",
         },
       },
+      default_component_configs = {
+        symlink_target = {
+          enabled = false,
+        },
+      },
+      filesystem = {
+        group_empty_dirs = true,
+      },
+      buffers = {
+        group_empty_dirs = true,
+      },
     },
   },
 }
