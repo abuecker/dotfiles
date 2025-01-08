@@ -1,0 +1,5 @@
+title = "Ghostty"
+theme = catppuccin-mocha
+shell-integration = fish
+font-family = "MesloLGS Nerd Font Mono"
+font-thicken = true

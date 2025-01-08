@@ -1,11 +1,16 @@
 fish_config theme choose "Catppuccin Mocha"
-# fish_config theme choose "Rosé Pine"
-# fish_config theme choose "Dracula Official"
 
 # Enable vi movement
 fish_vi_key_bindings
 
-eval "$(/usr/local/homebrew/bin/brew shellenv)"
+
+if test -e /opt/homebrew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else if test -e /usr/local/homebrew
+    eval "$(/usr/local/homebrew/bin/brew shellenv)"
+else if test -e /usr/local/bin/brew
+    echo "Homebrew not found"
+end
 
 # set the default terminfo
 set -gx TERM xterm-256color
@@ -24,6 +29,7 @@ set -x PATH $HOME/local/bin \
     /Applications/Autodesk/maya2018/Maya.app/Contents/bin \
     ~/.local/bin \
     $PATH
+
 
 set -x DEVELOPMENT true
 
@@ -71,7 +77,12 @@ ulimit -n 10240
 # Add firefox to the path for Selenium
 set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH
 
-set -x EDITOR /usr/local/bin/nvim
+if test -e /opt/homebrew/bin/nvim
+    set -x EDITOR /opt/homebrew/bin/nvim
+end
+if test -e /usr/local/bin/nvim
+    set -x EDITOR /usr/local/bin/nvim
+end
 
 # Colorized manpages
 set -gx MANPAGER "/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
