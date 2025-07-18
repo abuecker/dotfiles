@@ -79,9 +79,11 @@ set -x PATH /Applications/Firefox.app/Contents/MacOS $PATH
 
 if test -e /opt/homebrew/bin/nvim
     set -x EDITOR /opt/homebrew/bin/nvim
+    set -x GIT_EDITOR /opt/homebrew/bin/nvim
 end
 if test -e /usr/local/bin/nvim
     set -x EDITOR /usr/local/bin/nvim
+    set -x GIT_EDITOR /usr/local/bin/nvim
 end
 
 # Colorized manpages

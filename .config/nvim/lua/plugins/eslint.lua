@@ -6,12 +6,10 @@ return {
     -- other settings removed for brevity
     opts = {
       ---@type lspconfig.options
-      setup = {
-        eslint = {
-          packageManager = "yarn",
-          -- useESLintClass = true,
-          root_dir = root_dir,
-        },
+      eslint = {
+        packageManager = "yarn",
+        -- useESLintClass = true,
+        root_dir = root_dir,
       },
     },
   },
