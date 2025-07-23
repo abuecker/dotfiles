@@ -15,7 +15,7 @@
     ]
   },
   "breadcrumbs.enabled": true,
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "eslint.packageManager": "yarn",
   "npm.packageManager": "yarn",
   "npm.enableScriptExplorer": true,

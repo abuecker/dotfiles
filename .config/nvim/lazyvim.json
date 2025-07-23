@@ -1,6 +1,8 @@
 {
   "extras": [
     "lazyvim.plugins.extras.editor.mini-files",
+    "lazyvim.plugins.extras.lang.helm",
+    "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.util.octo"
   ],
   "install_version": 7,

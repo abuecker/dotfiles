@@ -3,7 +3,6 @@ local root_dir = require("lspconfig/util").root_pattern(".yarnrc.yml", "package.
 return {
   {
     "neovim/nvim-lspconfig",
-    -- other settings removed for brevity
     opts = {
       ---@type lspconfig.options
       eslint = {
