@@ -1,10 +1,10 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
     opts = {
-      servers = {
-        cssls = {},
-      },
+      ---@type lspconfig.options
+      cssls = {},
     },
   },
 }
