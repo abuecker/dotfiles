@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {},
+  "model": "anthropic/claude-sonnet-4-20250514",
+  "small_model": "anthropic/claude-3-5-haiku-20241022",
+  "theme": "catppuccin",
+  "share": "disabled",
+  "permission": {},
+  "autoupdate": true,
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": ["npx", "-y", "@upstash/context7-mcp"],
+      "enabled": true,
+    },
+  },
+}
